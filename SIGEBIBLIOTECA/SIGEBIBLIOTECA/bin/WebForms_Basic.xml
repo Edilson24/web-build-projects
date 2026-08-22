@@ -1,0 +1,353 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SIGEBIBLIOTECA
+</name>
+</assembly>
+<members>
+<member name="T:SIGEBIBLIOTECA.My.MyWebExtension">
+ <summary>
+ Módulo usado para definir as propriedades que estão disponíveis em My Namespace para projetos da web.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:SIGEBIBLIOTECA.My.MyWebExtension.Computer">
+ <summary>
+ Retorna informações sobre o computador host.
+ </summary>
+</member>
+<member name="P:SIGEBIBLIOTECA.My.MyWebExtension.User">
+ <summary>
+ Retorna informações sobre o usuário atual da web.
+ </summary>
+</member>
+<member name="P:SIGEBIBLIOTECA.My.MyWebExtension.Request">
+ <summary>
+ Retorna um objeto Request.
+ </summary>
+</member>
+<member name="P:SIGEBIBLIOTECA.My.MyWebExtension.Response">
+ <summary>
+ Retorna um objeto Response.
+ </summary>
+</member>
+<member name="P:SIGEBIBLIOTECA.My.MyWebExtension.Log">
+ <summary>
+ Retorna o objeto de log Asp.
+ </summary>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.LeitorDAO.PossuiEmprestimosAtivos(System.Int32)">
+ <summary>
+ Trava RN 18: Verifica se o leitor possui empréstimos ativos antes de permitir alteração de status/exclusão.
+ </summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._form1">
+<summary>
+Controle form1.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._btnNovaCategoria">
+<summary>
+Controle btnNovaCategoria.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._pnlAlerta">
+<summary>
+Controle pnlAlerta.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._lblMensagemAlerta">
+<summary>
+Controle lblMensagemAlerta.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._gvCategorias">
+<summary>
+Controle gvCategorias.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._litTituloModal">
+<summary>
+Controle litTituloModal.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._hfIdCategoria">
+<summary>
+Controle hfIdCategoria.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._txtNome">
+<summary>
+Controle txtNome.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._txtDescricao">
+<summary>
+Controle txtDescricao.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._btnSalvar">
+<summary>
+Controle btnSalvar.
+</summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._form1">
+<summary>
+Controle form1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._ScriptManager1">
+<summary>
+Controle ScriptManager1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._MenuLateral">
+<summary>
+Controle MenuLateral.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._btnNovoLivro">
+<summary>
+Controle btnNovoLivro.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._pnlAlerta">
+<summary>
+Controle pnlAlerta.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._lblMensagemAlerta">
+<summary>
+Controle lblMensagemAlerta.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._gvLivros">
+<summary>
+Controle gvLivros.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._litTituloModal">
+<summary>
+Controle litTituloModal.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._hfIdLivro">
+<summary>
+Controle hfIdLivro.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtTitulo">
+<summary>
+Controle txtTitulo.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._ddlCategoria">
+<summary>
+Controle ddlCategoria.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtAutor">
+<summary>
+Controle txtAutor.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtDesigner">
+<summary>
+Controle txtDesigner.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtEditora">
+<summary>
+Controle txtEditora.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtEdicao">
+<summary>
+Controle txtEdicao.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtAnoPublicacao">
+<summary>
+Controle txtAnoPublicacao.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtQtdTotal">
+<summary>
+Controle txtQtdTotal.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtPrecoEmprestimoDia">
+<summary>
+Controle txtPrecoEmprestimoDia.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._txtValorCompra">
+<summary>
+Controle txtValorCompra.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Livros._btnSalvar">
+<summary>
+Controle btnSalvar.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.MenuLateral.ObterClasseAtiva(System.String)">
+ <summary>
+ Função helper para destacar visualmente a opção ativa no menu
+ </summary>
+</member>
+<member name="F:SIGEBIBLIOTECA.Dashboard._form1">
+<summary>
+Controle form1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.SiteMaster._MainContent">
+<summary>
+Controle MainContent.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._Head1">
+<summary>
+controle Head1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._HeadContent">
+<summary>
+Controle HeadContent.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._form1">
+<summary>
+Controle form1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._FeaturedContent">
+<summary>
+Controle FeaturedContent.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._MainContent">
+<summary>
+Controle MainContent.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+<member name="F:SIGEBIBLIOTECA.Site_Mobile._ViewSwitcher1">
+<summary>
+controle ViewSwitcher1.
+</summary>
+<remarks>
+Campo gerado automaticamente.
+Para modificar, mova a declaração de campo do arquivo do designer para o arquivo code-behind.
+</remarks>
+</member>
+</members>
+</doc>

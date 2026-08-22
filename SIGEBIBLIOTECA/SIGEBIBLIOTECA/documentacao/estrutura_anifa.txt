@@ -1,0 +1,65 @@
+Sugerida pela IA
+SIGEBIBLIOTECA/
+│
+├── App_Data/
+│   └── sigebibliotecas.sql             # Script SQL de criação da base de dados
+│
+├── App_Start/
+│   ├── BundleConfig.vb                 # Configuração de CSS e JavaScript (Bootstrap/FontAwesome)
+│   ├── FilterConfig.vb                 # Filtros globais de segurança/sessão
+│   └── RouteConfig.vb                  # Mapeamento de rotas MVC
+│
+├── Controllers/
+│   ├── AccountController.vb            # Fase 3: Autenticação, Login e Logout
+│   ├── CategoriasController.vb         # Fase 4: Gestão de Categorias
+│   ├── EmprestimosController.vb        # Fases 5 e 6: Modal de Retirada, Devolução e Multas
+│   ├── HomeController.vb               # Dashboard principal do sistema
+│   ├── LeitoresController.vb           # Fase 4: Gestão de Leitores e Desativação
+│   └── LivrosController.vb             # Fase 4: Gestão de Acervo, Estoque e Preços
+│
+├── Helpers/
+│   ├── DatabaseHelper.vb               # Conexão MySQL Connector (MySqlConnection/MySqlCommand)
+│   └── LoggerHelper.vb                 # Fase 3: Serviço centralizado de auditoria (logs_sistema)
+│
+├── Models/
+│   ├── Categoria.vb                    # Model de Categoria
+│   ├── Emprestimo.vb                   # Model do Empréstimo Unificado
+│   ├── Leitor.vb                       # Model de Leitor
+│   ├── Livro.vb                        # Model de Livro
+│   ├── Usuario.vb                      # Model de Usuário/Atendente
+│   └── ViewModels/
+│       ├── EmprestimoViewModel.vb      # ViewModel para Modais de Empréstimo/Devolução
+│       └── LoginViewModel.vb           # ViewModel para autenticação
+│
+├── Views/
+│   ├── Account/
+│   │   └── Login.vbhtml                # Tela de Login do Sistema
+│   ├── Categorias/
+│   │   ├── Create.vbhtml
+│   │   └── Index.vbhtml
+│   ├── Emprestimos/
+│   │   ├── _ModalDevolucao.vbhtml      # Modal Web de devolução e liquidação de multas
+│   │   ├── _ModalEmprestimo.vbhtml     # Modal Web de retirada (70% adiantado)
+│   │   └── Index.vbhtml                # Tabela principal com ícones (Olho/Devolução)
+│   ├── Leitores/
+│   │   ├── Create.vbhtml
+│   │   └── Index.vbhtml
+│   ├── Livros/
+│   │   ├── Create.vbhtml
+│   │   └── Index.vbhtml
+│   └── Shared/
+│       ├── _Layout.vbhtml              # Layout principal (Navbar, Sidebar e Scripts)
+│       └── _LoginPartial.vbhtml        # Exibição do atendente logado
+│
+├── Content/
+│   ├── css/
+│   │   └── site.css                    # Estilos personalizados
+│   └── font-awesome/                   # Ícones profissionais (RN 15)
+│
+├── Scripts/
+│   ├── bootstrap.js
+│   ├── jquery.js
+│   └── emprestimos-modal.js            # JavaScript para cálculo automático nos Modais
+│
+├── Web.config                          # ConnectionString MySQL e configurações
+└── estrutura_anifa.txt                       # Mapeamento do projeto

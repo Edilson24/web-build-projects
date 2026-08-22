@@ -1,0 +1,121 @@
+-- ========================================================
+-- SISTEMA DE GESTÃO BIBLIOTECÁRIA (sigebibliotecas)
+-- Banco de dados otimizado conforme regras de negócio
+-- ========================================================
+
+CREATE DATABASE IF NOT EXISTS `sigebibliotecas` 
+DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE `sigebibliotecas`;
+
+-- 1. TABELA DE CATEGORIAS DE LIVROS (Regra 8)
+CREATE TABLE `categorias` (
+  `idcategoria` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `descricao` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 2. TABELA DE LIVROS (Regras 7, 8, 9, 10, 12, 21, 22)
+CREATE TABLE `livros` (
+  `idlivro` INT(11) NOT NULL AUTO_INCREMENT,
+  `idcategoria` INT(11) NOT NULL,
+  `titulo` VARCHAR(150) NOT NULL,
+  `autor` VARCHAR(250) NOT NULL,
+  `editora` VARCHAR(100) NOT NULL,
+  `edicao` VARCHAR(20) DEFAULT NULL,
+  `ano_publicacao` INT(4) DEFAULT NULL,
+  `preco_emprestimo_dia` DECIMAL(10,2) NOT NULL DEFAULT 0.00, -- Regra 7
+  `valor_compra` DECIMAL(10,2) NOT NULL,                      -- Regra 10 e 21
+  `qtd_total` INT(11) NOT NULL DEFAULT 1,                      -- Regra 10
+  `qtd_disponivel` INT(11) NOT NULL DEFAULT 1,                 -- Regras 9 e 10
+  `estado` ENUM('disponivel', 'esgotado') NOT NULL DEFAULT 'disponivel', -- Regra 9
+  PRIMARY KEY (`idlivro`),
+  CONSTRAINT `fk_livros_categorias` 
+    FOREIGN KEY (`idcategoria`) REFERENCES `categorias` (`idcategoria`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 3. TABELA DE LEITORES (Regras 11, 17, 18, 25)
+CREATE TABLE `leitores` (
+  `idleitor` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(150) NOT NULL,
+  `endereco` VARCHAR(255) DEFAULT NULL,
+  `telefone` VARCHAR(20) NOT NULL,
+  `tipo_leitor` ENUM('estudante', 'docente', 'externo') NOT NULL, -- Regra 17
+  `curso` VARCHAR(150) DEFAULT NULL,
+  `turma` VARCHAR(20) DEFAULT NULL,
+  `total_emprestimos_concluidos` INT(11) NOT NULL DEFAULT 0,    -- Regra 25 (Fidelidade)
+  `ativo` TINYINT(1) NOT NULL DEFAULT 1,                        -- Regra 18 (Desativar leitor)
+  PRIMARY KEY (`idleitor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 4. TABELA DE USUÁRIOS/ATENDENTES (Regras 4, 16)
+CREATE TABLE `usuarios` (
+  `idusuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(150) NOT NULL UNIQUE,
+  `senha` VARCHAR(255) NOT NULL,
+  `perfil` ENUM('admin', 'atendente') NOT NULL DEFAULT 'atendente', -- Regra 16
+  `ativo` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`idusuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 5. TABELA UNIFICADA DE EMPRÉSTIMOS E DEVOLUÇÕES
+-- (Regras 4, 11, 12, 13, 15, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29)
+CREATE TABLE `emprestimos` (
+  `idemprestimo` INT(11) NOT NULL AUTO_INCREMENT,
+  `idleitor` INT(11) NOT NULL,
+  `idlivro` INT(11) NOT NULL,
+  `idusuario_emprestimo` INT(11) NOT NULL, -- Log do atendente da retirada (Regra 4)
+  `idusuario_devolucao` INT(11) DEFAULT NULL, -- Log do atendente da devolução (Regra 4)
+  
+  -- Datas
+  `data_emprestimo` DATETIME NOT NULL,
+  `data_prevista_devolucao` DATE NOT NULL,
+  `data_real_devolucao` DATETIME DEFAULT NULL,
+  
+  -- Controle financeiro de aluguel
+  `dias_previstos` INT(11) NOT NULL,
+  `preco_diario_aplicado` DECIMAL(10,2) NOT NULL,
+  `teve_desconto_fidelidade` TINYINT(1) NOT NULL DEFAULT 0, -- Regra 25
+  `valor_total_aluguel` DECIMAL(10,2) NOT NULL,
+  `valor_pago_adiantado` DECIMAL(10,2) NOT NULL,             -- Regra 24 (70%)
+  `valor_saldo_aluguel` DECIMAL(10,2) NOT NULL,              -- Regra 24 (30%)
+  
+  -- Controle de atraso, danos e multas na devolução
+  `dias_atraso` INT(11) DEFAULT 0,                          -- Regra 23
+  `valor_multa_atraso` DECIMAL(10,2) DEFAULT 0.00,         -- Regras 19 e 28
+  `houve_dano` TINYINT(1) DEFAULT 0,                       -- Regras 21 e 22
+  `valor_multa_dano` DECIMAL(10,2) DEFAULT 0.00,          -- Regras 21 e 28 (Valor de compra)
+  `valor_total_pago` DECIMAL(10,2) DEFAULT NULL,           -- Valor final liquidação
+  
+  -- Estado da operação (Regra 15 e 27)
+  `status` ENUM('em_andamento', 'devolvido') NOT NULL DEFAULT 'em_andamento',
+  
+  PRIMARY KEY (`idemprestimo`),
+  CONSTRAINT `fk_emprestimos_leitores` 
+    FOREIGN KEY (`idleitor`) REFERENCES `leitores` (`idleitor`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_emprestimos_livros` 
+    FOREIGN KEY (`idlivro`) REFERENCES `livros` (`idlivro`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_emprestimos_usuario_emp` 
+    FOREIGN KEY (`idusuario_emprestimo`) REFERENCES `usuarios` (`idusuario`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_emprestimos_usuario_dev` 
+    FOREIGN KEY (`idusuario_devolucao`) REFERENCES `usuarios` (`idusuario`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 6. TABELA DE LOGS DE AUDITORIA (Regra 4)
+CREATE TABLE `logs_sistema` (
+  `idlog` INT(11) NOT NULL AUTO_INCREMENT,
+  `idusuario` INT(11) NOT NULL,
+  `acao` VARCHAR(255) NOT NULL,
+  `data_hora` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idlog`),
+  CONSTRAINT `fk_logs_usuarios` 
+    FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`) 
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

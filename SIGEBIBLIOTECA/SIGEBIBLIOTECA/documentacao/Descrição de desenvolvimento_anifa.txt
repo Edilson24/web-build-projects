@@ -1,0 +1,91 @@
+Descrição de desenvolvimento
+SISTEMA DE GESTÃO BIBLIOTECÁRIA
+Projeto para cliente: Anifa Armando
+Ferramentas:
+1. Visual basic (web), linguagem de programação
+2. MySQL Workbench para banco de dados
+8. Estrutura MVC
+10. O sistema deve ter logs de usuários, para saber que atendente fez uma determinada operação 
+15. Não vamos usar emojs que é muito genérico, mas sim icons.
+
+
+3. A biblioteca está centralizada a uma instituição específica, como uma biblioteca de universidade ou escolas.
+4. A biblioteca deve permitir cadastrar livros, junto com o seu valor de imprestimo por dia. Cada livro tem um preço de imprestimo por dia. Grátis seria se fosse fazer a leitura na biblioteca (no local).
+
+5. Os livros devem ser classificados por categoria.
+17. Os livros terão pelo menos 2 estados: esgotado e disponível.
+12. Ao cadastrar um livro é indicado a quantidade de unidades. Por exemplo: ao cadastrar um livro devo referir a quantidade. Então se fazer um emprestimo deve decrementar as unidades e ao esgotar não deve permitir que seja emprestado, pois todas as unidades estão esgotadas e valor de compra.
+
+6. Ao fazer um imprestimo de livro, caso o leitor seja um frequente terá desconto de 10% no valor do imprestimo.
+7. Ao Fazer um imprestimo deve se marcar a data em foi feito o imprestimo e a data prevista de devolução.
+
+
+13. O imprestimo será registado através de um modal (já que será web) assim como a devolução.
+14. Na tela de registro de imprestimos terá lá uma tabela onde na ultima coluna terá dois ícones: um de olho que nos possibilitará visualisar os detálhes do emprestimo, desde a pessoa que emprestou assim como detalhes mais essenciais e um outro icon para chamar o modal de devolução.
+
+18. O registro de emprestimos deve ter estados: em andamento (quando já foi emprestado mas ainda não devolvido) e devolvido.
+
+9. Niveis de acesso: admin, atendente.
+
+11. Estamos a pressupor que termos três tipos de leitores: estudante (interno), professor/docente ou externo (alguém que não pertence aquela instituição)
+
+16. Na tela de gestão de leitores, deve ter a função de desativar leitor para que ele fique impedido de fazer algum imprestimo. Caso tenha algum imprestimo em andamento essa função fica desabilitada.
+
+19. Em caso de atraso na devolução o leitor deve pagar a cada dia que passou 50% do valor de imprestimo por dia. Se um livro por exemplo culta 50 meticais impretimo diário, então se atrasa um dia vai pagar 25 mt a mais, e assim vai.
+
+
+20. Ao efetuar a devolução deve ser restrito selecionar datas anteriores à data do imprestimo. 
+21. Ao fazer a devolução para casos de danos deve ter alguma forma de marcar que realmente houve dano e ser acrescentado o falor a pagar. Os custos em caso de danos é o valor da compra do próprio livro
+
+22. No caso de se marcar na devolução que houve dano do livro, o antendente/admin (usuario que esteja a realizar a operação)  não precisa ter um campo onde irá inserir o valor de compra do livro, o sistema já deve puxar esse valor doo banco de dados para evitar disparidades.
+
+23. O cálculo de multa por atraso na devolução não é feito manualmente, ao fazer um imprestimo do livro deve ser registrado a data em que está sendo feito o imprestimo e a data combinada para devolução, e na devolução terá um campo para inserir a data real da devolução. O sistema deve fazer a diferença entre a data combinada para o cliente devolver o livro e a data real da devolução do livro, aí teremos o numero de dias de atrasos e poderá ser aplicada a multa automaticamente pelo sistema referida no ponto 19. 
+
+24. 24. Validação e Fechamento Automático da Devolução:
+No momento em que o atendente confirma a devolução de um livro, o sistema valida automaticamente se a data_real_devolucao é igual ou posterior à data_emprestimo. Caso os cálculos apontem atraso ou danos, os valores correspondentes são somados de forma integrada ao extrato final do leitor antes de encerrar o estado do empréstimo de em_andamento para devolvido.
+
+25. Lógica de Pagamento do Empréstimo: No ato da retirada do livro, o leitor realiza o pagamento adiantado correspondente a 70% do valor estimado total (preço_diario x dias_previstos).  No momento da devolução real, o leitor efetua o pagamento do saldo restante (30%) somado a eventuais multas por atraso ou danos no livro.
+
+26. Critério de Desconto por Fidelidade (Leitor Frequente):O leitor (independentemente de ser estudante, docente ou externo) recebe um desconto automático de 10% no valor do aluguel ao atingir um número específico de empréstimos concluídos com sucesso (ex: no 5º e no 10º empréstimo concluidos).  O cadastro do leitor manterá uma contagem incremental de empréstimos finalizados para validação dessa regra.
+
+27. Limite de Empréstimos Simultâneos:Cada leitor pode ter no máximo 2 empréstimos ativos (em andamento) simultaneamente. Para realizar a retirada de um novo livro, é obrigatória a devolução prévia de pelo menos um dos livros em sua posse.
+
+28. Unificação de Histórico e Ciclo de Vida do Empréstimo:O ciclo de vida do empréstimo é gerido em uma única tabela no banco de dados. Os registros conterão o estado (em_andamento ou devolvido), além de armazenar as datas previstas e a data real de devolução.  
+
+29. Cálculo e Cumulatividade de Multas:Por Atraso: Calculada pela diferença simples em dias entre a data_fim_prevista e a data_real_devolucao (dias_atraso x 50% do valor diário do livro.  Por Dano: Adiciona-se o valor integral de compra do livro cadastrado previamente no banco de dados.  Cumulatividade: Caso o livro seja entregue com atraso e danificado, o valor total devido será a soma da multa por atraso + valor de compra do livro + saldo de 30% do aluguel.
+
+30. Reposição de Estoque:Ao ser confirmada a devolução no sistema, a quantidade disponível do livro é incrementada automaticamente em +1 unidade no estoque, mesmo em casos de danos (pois a multa paga pelo leitor cobre o custo de reposição do exemplar). 
+
+31. DETALHES TÉCNICOS:
+📌 Erros Técnicos Encontrados e Soluções Aplicadas
+Conflito CodeBehind vs CodeFile (Web Site vs Web Application):
+
+Sintoma: Erro do Analisador Não foi possível carregar o tipo 'SIGEBIBLIOTECA.Login'.
+
+Causa: O compilador tentava compilar dinamicamente uma DLL temporária (App_Web_...) em vez de ler o assembly pré-compilado do projeto.
+
+Solução: Alteração do atributo da diretiva <%@ Page %> para CodeFile="Login.aspx.vb", forçando o ASP.NET a ler o código diretamente do arquivo de origem VB.
+
+Redirecionamento do FriendlyUrls (RouteConfig.vb):
+
+Sintoma: Rotas de páginas .aspx perdiam a associação com as classes durante a execução no IIS Express.
+
+Solução: Configuração de .AutoRedirectMode = RedirectMode.Off no módulo RouteConfig, garantindo que o IIS atenda diretamente aos pedidos .aspx.
+
+Incompatibilidade do web.config com Razor/MVC:
+
+Sintoma: Erros de sintaxe como O tipo 'div' não está definido ou '>' esperado.
+
+Solução: Remoção completa das seções system.web.webPages.razor do web.config, mantendo o arquivo limpo apenas com o direcionamento do ASP.NET Web Forms.
+
+📋 Regras de Negócio e Convenções de Nomenclatura
+Namespace Padrão: Todas as classes do projeto devem estar sob o namespace SIGEBIBLIOTECA.
+
+Integridade de Ficheiros: Nunca criar ou renomear ficheiros .aspx.vb manualmente fora da interface do Visual Studio para não quebrar as referências do .vbproj.
+
+Página Inicial: O sistema está configurado para direcionar o endereço raiz (/) diretamente para o Login.aspx.
+
+32. Cores da preferencia da cliente: #ABDFEA, #4299A3, #1E3F4A, #F8FCFD, #FFFFFF, #D1E9EE,#000000,  rgba(30, 63, 74, 0.25), rgba(66, 153, 163, 0.4).
+
+
+aluguel = emprestimo
