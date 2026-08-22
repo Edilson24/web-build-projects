@@ -119,6 +119,34 @@ Namespace SIGEBIBLIOTECA.DAO
             End Using
         End Function
 
+        Public Function ListarAtivos() As List(Of Leitor)
+            Dim lista As New List(Of Leitor)()
+            Dim sql As String = "SELECT * FROM leitores WHERE ativo = 1 ORDER BY nome ASC"
+
+            Using conn As MySqlConnection = DatabaseHelper.GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    conn.Open()
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim item As New Leitor() With {
+                                .IdLeitor = Convert.ToInt32(reader("idleitor")),
+                                .Nome = reader("nome").ToString(),
+                                .Endereco = If(IsDBNull(reader("endereco")), "", reader("endereco").ToString()),
+                                .Telefone = reader("telefone").ToString(),
+                                .TipoLeitor = reader("tipo_leitor").ToString(),
+                                .Curso = If(IsDBNull(reader("curso")), "", reader("curso").ToString()),
+                                .Turma = If(IsDBNull(reader("turma")), "", reader("turma").ToString()),
+                                .TotalEmprestimosConcluidos = Convert.ToInt32(reader("total_emprestimos_concluidos")),
+                                .Ativo = Convert.ToBoolean(reader("ativo"))
+                            }
+                            lista.Add(item)
+                        End While
+                    End Using
+                End Using
+            End Using
+            Return lista
+        End Function
+
         Public Function AlterarStatus(idLeitor As Integer, novoStatus As Boolean) As Boolean
             Dim sql As String = "UPDATE leitores SET ativo = @ativo WHERE idleitor = @idleitor"
             Using conn As MySqlConnection = DatabaseHelper.GetConnection()

@@ -41,6 +41,42 @@ Namespace SIGEBIBLIOTECA.dao
             Return lista
         End Function
 
+        Public Function ListarDisponiveis() As List(Of Livro)
+            Dim lista As New List(Of Livro)()
+            Dim sql As String = "SELECT l.*, c.nome AS NomeCategoria " &
+                               "FROM livros l " &
+                               "INNER JOIN categorias c ON l.idcategoria = c.idcategoria " &
+                               "WHERE l.qtd_disponivel > 0 AND l.estado = 'disponivel' " &
+                               "ORDER BY l.titulo ASC"
+
+            Using conn As MySqlConnection = DatabaseHelper.GetConnection()
+                Using cmd As New MySqlCommand(sql, conn)
+                    conn.Open()
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim item As New Livro() With {
+                                .IdLivro = Convert.ToInt32(reader("idlivro")),
+                                .IdCategoria = Convert.ToInt32(reader("idcategoria")),
+                                .NomeCategoria = reader("NomeCategoria").ToString(),
+                                .Titulo = reader("titulo").ToString(),
+                                .Autor = reader("autor").ToString(),
+                                .Editora = reader("editora").ToString(),
+                                .Edicao = If(IsDBNull(reader("edicao")), "", reader("edicao").ToString()),
+                                .AnoPublicacao = If(IsDBNull(reader("ano_publicacao")), CType(Nothing, Nullable(Of Integer)), Convert.ToInt32(reader("ano_publicacao"))),
+                                .PrecoEmprestimoDia = Convert.ToDecimal(reader("preco_emprestimo_dia")),
+                                .ValorCompra = Convert.ToDecimal(reader("valor_compra")),
+                                .QtdTotal = Convert.ToInt32(reader("qtd_total")),
+                                .QtdDisponivel = Convert.ToInt32(reader("qtd_disponivel")),
+                                .Estado = reader("estado").ToString()
+                            }
+                            lista.Add(item)
+                        End While
+                    End Using
+                End Using
+            End Using
+            Return lista
+        End Function
+
         Public Function ObterPorId(id As Integer) As Livro
             Dim item As Livro = Nothing
             Dim sql As String = "SELECT * FROM livros WHERE idlivro = @id"
