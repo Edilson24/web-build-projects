@@ -42,6 +42,17 @@ SIGEBIBLIOTECA
  Trava RN 18: Verifica se o leitor possui empréstimos ativos antes de permitir alteração de status/exclusão.
  </summary>
 </member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.LogDAO.RegistrarLog(System.Int32,System.String)">
+ <summary>
+ Registra uma nova ação diretamente na tabela de logs nativa.
+ </summary>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.LogDAO.ListarTodos">
+ <summary>
+ Retorna a auditoria unificada trazendo dados da tabela logs_sistema 
+ e combinando com o histórico operacional da tabela emprestimos.
+ </summary>
+</member>
 <member name="F:SIGEBIBLIOTECA.SIGEBIBLIOTECA.Categorias._form1">
 <summary>
 Controle form1.

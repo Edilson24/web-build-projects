@@ -187,9 +187,12 @@
     <Compile Include="dao\EmprestimoDAO.vb" />
     <Compile Include="dao\LeitorDAO.vb" />
     <Compile Include="dao\LivroDAO.vb" />
+    <Compile Include="dao\LogDAO.vb" />
+    <Compile Include="dao\UsuarioDAO.vb" />
     <Compile Include="Models\Emprestimo.vb" />
     <Compile Include="Models\Leitor.vb" />
     <Compile Include="Models\Livro.vb" />
+    <Compile Include="Models\LogModel.vb" />
     <Compile Include="views\Categorias.aspx.designer.vb">
       <DependentUpon>Categorias.aspx</DependentUpon>
     </Compile>
@@ -218,6 +221,20 @@
       <DependentUpon>Livros.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="views\Logs.aspx.designer.vb">
+      <DependentUpon>Logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Logs.aspx.vb">
+      <DependentUpon>Logs.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="views\Usuarios.aspx.designer.vb">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Usuarios.aspx.vb">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Content Include="About.aspx" />
     <Content Include="App_Data\sigebiblioteca.sql" />
     <Content Include="Contact.aspx" />
@@ -242,7 +259,6 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Compile Include="dao\CategoriaDAO.vb" />
-    <Compile Include="dao\UsuarioDAO.vb" />
     <Compile Include="Dashboard.aspx.designer.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
@@ -312,6 +328,8 @@
     <Content Include="views\Emprestimos.aspx" />
     <Content Include="views\Leitores.aspx" />
     <Content Include="views\Livros.aspx" />
+    <Content Include="views\Logs.aspx" />
+    <Content Include="views\Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
