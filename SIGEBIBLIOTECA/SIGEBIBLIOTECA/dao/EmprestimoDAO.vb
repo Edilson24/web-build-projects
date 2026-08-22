@@ -37,7 +37,6 @@ Namespace SIGEBIBLIOTECA.DAO
                                 .ValorTotalAluguel = Convert.ToDecimal(reader("valor_total_aluguel")),
                                 .ValorPagoAdiantado = Convert.ToDecimal(reader("valor_pago_adiantado")),
                                 .ValorSaldoAluguel = Convert.ToDecimal(reader("valor_saldo_aluguel")),
-                                .DiasAtraso = Convert.ToInt32(reader("dias_atraso")),
                                 .ValorMultaAtraso = Convert.ToDecimal(reader("valor_multa_atraso")),
                                 .HouveDano = Convert.ToBoolean(reader("houve_dano")),
                                 .ValorMultaDano = Convert.ToDecimal(reader("valor_multa_dano")),

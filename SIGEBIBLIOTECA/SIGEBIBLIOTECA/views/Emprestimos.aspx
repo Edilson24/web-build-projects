@@ -1,25 +1,31 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Emprestimos.aspx.vb" Inherits="SIGEBIBLIOTECA.Emprestimos" %>
+<%@ Register Src="~/includes/MenuLateral.ascx" TagPrefix="uc" TagName="MenuLateral" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head runat="server">
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestão de Empréstimos - SIGEBIBLIOTECA</title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Usa ResolveUrl para garantir a rota correta a partir da raiz (~/) -->
+    <link href="<%= ResolveUrl("~/Content/bootstrap.min.css") %>" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    
     <style>
         body { background-color: #F8FCFD; color: #1E3F4A; }
         .card-custom { border: 1px solid #D1E9EE; border-radius: 8px; box-shadow: 0 4px 6px rgba(30, 63, 74, 0.05); }
         .btn-primary-custom { background-color: #4299A3; border-color: #4299A3; color: #FFFFFF; }
         .btn-primary-custom:hover { background-color: #1E3F4A; border-color: #1E3F4A; color: #FFFFFF; }
-        .badge-andamento { background-color: #ABDFEA; color: #1E3F4A; font-weight: 600; }
-        .badge-devolvido { background-color: #D1E9EE; color: #4299A3; font-weight: 600; }
-        .table-header { background-color: #D1E9EE; color: #1E3F4A; }
+        .badge-andamento { background-color: #ABDFEA; color: #1E3F4A; font-weight: 600; padding: 0.5em 0.75em; border-radius: 4px; }
+        .badge-devolvido { background-color: #D1E9EE; color: #4299A3; font-weight: 600; padding: 0.5em 0.75em; border-radius: 4px; }
+        .table-header { background-color: #D1E9EE !important; color: #1E3F4A !important; }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <uc:MenuLateral runat="server" ID="MenuLateral" />
         
         <div class="container py-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -32,34 +38,54 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </asp:Panel>
 
-            <div class="card card-custom p-3">
+<div class="card card-custom p-3">
                 <div class="table-responsive">
                     <asp:GridView ID="gvEmprestimos" runat="server" AutoGenerateColumns="False" DataKeyNames="IdEmprestimo"
-                        CssClass="table table-hover align-middle" GridLines="None" EmptyDataText="Nenhum empréstimo registrado.">
+                        CssClass="table table-hover align-middle mb-0" GridLines="None" EmptyDataText="Nenhum empréstimo registrado.">
                         <HeaderStyle CssClass="table-header" />
                         <Columns>
-                            <asp:BoundField DataField="IdEmprestimo" HeaderText="#" />
-                            <asp:BoundField DataField="TituloLivro" HeaderText="Livro" />
-                            <asp:BoundField DataField="NomeLeitor" HeaderText="Leitor" />
-                            <asp:BoundField DataField="DataEmprestimo" HeaderText="Retirada" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-                            <asp:BoundField DataField="DataPrevistaDevolucao" HeaderText="Prev. Devolução" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="ValorTotalAluguel" HeaderText="Total (MT)" DataFormatString="{0:N2}" />
-                            <asp:BoundField DataField="ValorPagoAdiantado" HeaderText="70% Pago" DataFormatString="{0:N2}" />
-                            <asp:TemplateField HeaderText="Status" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
+                            <asp:BoundField DataField="TituloLivro" HeaderText="Livro" HeaderStyle-CssClass="fw-bold" />
+                            <asp:BoundField DataField="NomeLeitor" HeaderText="Leitor" HeaderStyle-CssClass="fw-bold" />
+                            
+                            <%-- 1. Datas de Retirada e Previsão unificadas --%>
+                            <asp:TemplateField HeaderText="Retirada / Prev. Devolução" HeaderStyle-CssClass="fw-bold">
+                                <ItemTemplate>
+                                    <small class="text-muted"><i class="fas fa-calendar-out me-1"></i>Retirada:</small> <%# Convert.ToDateTime(Eval("DataEmprestimo")).ToString("dd/MM/yyyy HH:mm") %>
+                                    <br />
+                                    <small class="text-muted"><i class="fas fa-calendar-check me-1"></i>Previsão:</small> <%# Convert.ToDateTime(Eval("DataPrevistaDevolucao")).ToString("dd/MM/yyyy") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <%-- Nova coluna: Data Real de Devolução --%>
+                            <asp:TemplateField HeaderText="Data Devolução" HeaderStyle-CssClass="fw-bold">
+                                <ItemTemplate>
+                                    <%# If(Eval("DataRealDevolucao") IsNot Nothing AndAlso Not IsDBNull(Eval("DataRealDevolucao")), Convert.ToDateTime(Eval("DataRealDevolucao")).ToString("dd/MM/yyyy HH:mm"), "<span class='text-muted'>-</span>") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>                          
+
+                            <%-- 2. Coluna única para Valor Total Pago --%>
+                            <asp:TemplateField HeaderText="Total Pago (MT)" HeaderStyle-CssClass="fw-bold">
+                                <ItemTemplate>
+                                    <%# If(Eval("ValorTotalPago") IsNot Nothing AndAlso Not IsDBNull(Eval("ValorTotalPago")), Convert.ToDecimal(Eval("ValorTotalPago")).ToString("N2"), "<span class='text-muted'>-</span>") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Status" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center fw-bold">
                                 <ItemTemplate>
                                     <span class='badge <%# If(Eval("Status").ToString() = "em_andamento", "badge-andamento", "badge-devolvido") %>'>
                                         <%# Eval("Status").ToString().Replace("_", " ").ToUpper() %>
                                     </span>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Ações" ItemStyle-CssClass="text-end" HeaderStyle-CssClass="text-end">
+
+                            <asp:TemplateField HeaderText="Ações" ItemStyle-CssClass="text-end" HeaderStyle-CssClass="text-end fw-bold">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnDetalhes" runat="server" CommandName="Detalhes" CommandArgument='<%# Eval("IdEmprestimo") %>' CssClass="btn btn-sm btn-outline-info me-1" ToolTip="Visualizar Detalhes">
-                                        <i class="bi bi-eye"></i>
+                                        <i class="fas fa-eye"></i>
                                     </asp:LinkButton>
                                     <asp:LinkButton ID="btnDevolucao" runat="server" CommandName="Devolucao" CommandArgument='<%# Eval("IdEmprestimo") %>' 
                                         CssClass="btn btn-sm btn-outline-success" Visible='<%# Eval("Status").ToString() = "em_andamento" %>' ToolTip="Efetuar Devolução">
-                                        <i class="bi bi-arrow-return-left"></i>
+                                        <i class="fas fa-undo"></i>
                                     </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -188,5 +214,8 @@
             </div>
         </asp:Panel>
     </form>
+
+    <!-- Script JavaScript do Bootstrap para garantir interatividade dos componentes -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

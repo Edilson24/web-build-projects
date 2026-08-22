@@ -21,6 +21,7 @@ Namespace SIGEBIBLIOTECA.Models
 
         Public Property DiasAtraso As Integer
         Public Property ValorMultaAtraso As Decimal
+
         Public Property HouveDano As Boolean
         Public Property ValorMultaDano As Decimal
         Public Property ValorTotalPago As Nullable(Of Decimal)

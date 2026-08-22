@@ -155,12 +155,21 @@ Namespace SIGEBIBLIOTECA
 
             ElseIf e.CommandName = "Detalhes" Then
                 Dim emp = emprestimoDao.ObterPorId(idEmprestimo)
-                litDetalhes.Text = $"<p><strong>Empréstimo ID:</strong> {emp.IdEmprestimo}</p>" &
-                                  $"<p><strong>Livro:</strong> {emp.TituloLivro}</p>" &
-                                  $"<p><strong>Leitor:</strong> {emp.NomeLeitor}</p>" &
-                                  $"<p><strong>Status:</strong> {emp.Status}</p>" &
-                                  $"<p><strong>Adiantamento (70%):</strong> {emp.ValorPagoAdiantado:N2} MT</p>" &
-                                  $"<p><strong>Saldo Restante (30%):</strong> {emp.ValorSaldoAluguel:N2} MT</p>"
+
+                ' Utilizando String.Format para garantir compatibilidade com o compilador do ASP.NET
+                litDetalhes.Text = String.Format("<p><strong>Empréstimo ID:</strong> {0}</p>" &
+                                                 "<p><strong>Livro:</strong> {1}</p>" &
+                                                 "<p><strong>Leitor:</strong> {2}</p>" &
+                                                 "<p><strong>Status:</strong> {3}</p>" &
+                                                 "<p><strong>Adiantamento (70%):</strong> {4:N2} MT</p>" &
+                                                 "<p><strong>Saldo Restante (30%):</strong> {5:N2} MT</p>",
+                                                 emp.IdEmprestimo,
+                                                 emp.TituloLivro,
+                                                 emp.NomeLeitor,
+                                                 emp.Status,
+                                                 emp.ValorPagoAdiantado,
+                                                 emp.ValorSaldoAluguel)
+
                 pnlModalDetalhes.Visible = True
             End If
         End Sub
@@ -220,6 +229,9 @@ Namespace SIGEBIBLIOTECA
                 emp.HouveDano = chkHouveDano.Checked
                 emp.ValorMultaDano = Convert.ToDecimal(txtMultaDano.Text)
                 emp.ValorTotalPago = Convert.ToDecimal(txtTotalDevolucao.Text)
+
+                Dim valorLiquidaçãoDevolucao As Decimal = Convert.ToDecimal(txtTotalDevolucao.Text)
+                emp.ValorTotalPago = emp.ValorPagoAdiantado + valorLiquidaçãoDevolucao
 
                 If emprestimoDao.RegistrarDevolucao(emp) Then
                     ExibirMensagem("Devolucao e liquidação concluídas com sucesso!", True)
