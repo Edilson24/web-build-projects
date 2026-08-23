@@ -184,6 +184,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dao\DashboardDAO.vb" />
     <Compile Include="dao\EmprestimoDAO.vb" />
     <Compile Include="dao\LeitorDAO.vb" />
     <Compile Include="dao\LivroDAO.vb" />
@@ -264,7 +265,7 @@
     </Compile>
     <Compile Include="Dashboard.aspx.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Helpers\DatabaseHelper.vb" />
     <Content Include="includes\MenuLateral.ascx" />

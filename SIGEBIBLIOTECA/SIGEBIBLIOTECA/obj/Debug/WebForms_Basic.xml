@@ -37,6 +37,26 @@ SIGEBIBLIOTECA
  Retorna o objeto de log Asp.
  </summary>
 </member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.DashboardDAO.ObterEstatisticasGerais">
+ <summary>
+ Obtém os 4 indicadores principais dos cards
+ </summary>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.DashboardDAO.ObterEvolucaoReceitaMensal">
+ <summary>
+ Obtém o faturamento mensal dos últimos 6 meses para o gráfico
+ </summary>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.DashboardDAO.ObterLeitoresFrequentes">
+ <summary>
+ Lista os leitores com maior número de empréstimos
+ </summary>
+</member>
+<member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.DashboardDAO.ObterLivrosMaisSolicitados">
+ <summary>
+ Lista os livros mais requisitados
+ </summary>
+</member>
 <member name="M:SIGEBIBLIOTECA.SIGEBIBLIOTECA.DAO.LeitorDAO.PossuiEmprestimosAtivos(System.Int32)">
  <summary>
  Trava RN 18: Verifica se o leitor possui empréstimos ativos antes de permitir alteração de status/exclusão.
@@ -287,15 +307,6 @@ Para modificar, mova a declaração de campo do arquivo de designer para o arqui
  <summary>
  Função helper para destacar visualmente a opção ativa no menu
  </summary>
-</member>
-<member name="F:SIGEBIBLIOTECA.Dashboard._form1">
-<summary>
-Controle form1.
-</summary>
-<remarks>
-Campo gerado automaticamente.
-Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-</remarks>
 </member>
 <member name="F:SIGEBIBLIOTECA.SiteMaster._MainContent">
 <summary>

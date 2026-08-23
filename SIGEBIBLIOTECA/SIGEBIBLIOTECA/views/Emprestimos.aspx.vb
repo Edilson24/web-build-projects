@@ -19,7 +19,7 @@ Namespace SIGEBIBLIOTECA
             ' Restrição do nível de acesso
             Dim perfil As String = If(Session("UsuarioNivel") IsNot Nothing, Session("UsuarioNivel").ToString().Trim(), "")
             If String.IsNullOrEmpty(perfil) Then
-                Response.Redirect("Login.aspx")
+                Response.Redirect("~/Login.aspx")
             End If
 
             If Not IsPostBack Then
