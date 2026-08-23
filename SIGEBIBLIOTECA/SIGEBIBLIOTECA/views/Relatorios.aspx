@@ -54,7 +54,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h3 class="fw-bold" style="color: #1E3F4A;">
-                        <i class="fa-solid fa-file-pdf me-2" style="color: #4299A3;"></i>Relatórios e Exportação PDF
+                        <i class="fa-solid fa-file-pdf me-2" style="color: #4299A3;"></i>Relatórios e Exportação 
                     </h3>
                     <p class="text-muted mb-0">Filtre as informações do sistema e gere relatórios consolidados em formato PDF.</p>
                 </div>

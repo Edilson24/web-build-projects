@@ -76,26 +76,41 @@ Namespace SIGEBIBLIOTECA.DAO
                         sql &= " ORDER BY e.data_real_devolucao DESC"
 
                     Case "LEITORES"
-                        sql = "SELECT idleitor AS 'ID', nome AS 'Nome Completo', " &
-                              "telefone AS 'Telefone',  " &
+                        ' Ajustado conforme a tabela `leitores`
+                        sql = "SELECT idleitor AS 'ID', " &
+                              "nome AS 'Nome Completo', " &
+                              "telefone AS 'Telefone', " &
+                              "tipo_leitor AS 'Tipo Leitor', " &
+                              "IFNULL(curso, '-') AS 'Curso', " &
+                              "IFNULL(turma, '-') AS 'Turma', " &
+                              "total_emprestimos_concluidos AS 'Empréstimos Concluídos', " &
+                              "IF(ativo = 1, 'Ativo', 'Inativo') AS 'Situação' " &
                               "FROM leitores WHERE 1=1 "
 
                         If Not String.IsNullOrEmpty(termo) Then
-                            sql &= " AND (nome LIKE @termo OR email LIKE @termo OR numero_documento LIKE @termo)"
+                            sql &= " AND (nome LIKE @termo OR telefone LIKE @termo OR curso LIKE @termo OR turma LIKE @termo)"
                             cmd.Parameters.AddWithValue("@termo", "%" & termo & "%")
                         End If
 
                         sql &= " ORDER BY nome ASC"
 
                     Case "LIVROS"
-                        sql = "SELECT lv.idlivro AS 'ID', lv.titulo AS 'Título', lv.autor AS 'Autor', " &
-                              "IFNULL(c.nome, 'Sem Categoria') AS 'Categoria', lv.quantidade_exemplares AS 'Exemplares' " &
+                        ' Ajustado conforme a tabela `livros`
+                        sql = "SELECT lv.idlivro AS 'ID', " &
+                              "lv.titulo AS 'Título', " &
+                              "lv.autor AS 'Autor', " &
+                              "lv.editora AS 'Editora', " &
+                              "IFNULL(c.nome, 'Sem Categoria') AS 'Categoria', " &
+                              "FORMAT(lv.preco_emprestimo_dia, 2) AS 'Preço/Dia (MT)', " &
+                              "lv.qtd_total AS 'Total', " &
+                              "lv.qtd_disponivel AS 'Disponíveis', " &
+                              "lv.estado AS 'Estado' " &
                               "FROM livros lv " &
                               "LEFT JOIN categorias c ON lv.idcategoria = c.idcategoria " &
                               "WHERE 1=1 "
 
                         If Not String.IsNullOrEmpty(termo) Then
-                            sql &= " AND (lv.titulo LIKE @termo OR lv.autor LIKE @termo OR c.nome LIKE @termo)"
+                            sql &= " AND (lv.titulo LIKE @termo OR lv.autor LIKE @termo OR lv.editora LIKE @termo OR c.nome LIKE @termo)"
                             cmd.Parameters.AddWithValue("@termo", "%" & termo & "%")
                         End If
 

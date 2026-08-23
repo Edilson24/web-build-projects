@@ -87,5 +87,18 @@ Página Inicial: O sistema está configurado para direcionar o endereço raiz (/
 
 32. Cores da preferencia da cliente: #ABDFEA, #4299A3, #1E3F4A, #F8FCFD, #FFFFFF, #D1E9EE,#000000,  rgba(30, 63, 74, 0.25), rgba(66, 153, 163, 0.4).
 
+33. Relatórios
+33.1. Geração e Consolidação de Relatórios Gerenciais: O módulo de relatórios deve fornecer visões consolidadas e consolidações estatísticas para tomada de decisão, permitindo a filtragem dinâmica de dados históricos por período (Data Início e Data Fim), tipo de operação e estado financeiro/operacional.
+
+33.2. Filtros Combinados de Período e Categoria: A consulta de relatórios deve permitir a seleção customizada de intervalos de datas de emissão/transação e filtragem específica por status do empréstimo (Ex: Em Andamento, Devolvido, Com Atraso, Com Avaria/Dano).
+
+33.3. Relatório Financeiro e Arrecadação de Faturamento: O sistema deve calcular dinamicamente o total de receita gerada por período, discriminando o valor arrecadado via adiantamento obrigatório (70%), liquidação final (30%), multas por atraso e penalidades cobradas por avaria/perda do acervo.
+
+33.4. Estatísticas de Desempenho do Acervo: O relatório de livros deve destacar os títulos mais requisitados, taxa de rotatividade de exemplares por categoria, livros atualmente em atraso de devolução e o índice de avarias registradas por exemplar.
+
+33.5. Relatório de Perfil e Fidelidade de Leitores: O relatório de leitores deve listar os usuários mais ativos, histórico de atrasos recorrentes para fins de suspensão/bloqueio preventivo e a contagem de leitores elegíveis ao desconto de fidelidade.
+
+33.6. Exportação e Impressão de Relatórios: A interface de relatórios deve disponibilizar recursos para exportação dos dados tabulados e formatação adequada para impressão/geração de documentos de prestação de contas (PDF/CSS Print Friendly).
+
 
 aluguel = emprestimo
