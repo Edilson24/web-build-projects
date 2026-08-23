@@ -54,6 +54,7 @@ D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\Antlr3.Runtime.dll
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\BouncyCastle.Cryptography.dll
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\Google.Protobuf.dll
+D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\itextsharp.dll
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Compression.LZ4.dll
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Compression.LZ4.Streams.dll
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Hash.xxHash.dll
@@ -83,6 +84,7 @@ D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\BouncyCastle.Cryptography.xml
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\Google.Protobuf.pdb
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\Google.Protobuf.xml
+D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\itextsharp.xml
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Compression.LZ4.xml
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Compression.LZ4.Streams.xml
 D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\SIGEBIBLIOTECA\SIGEBIBLIOTECA\bin\K4os.Hash.xxHash.xml

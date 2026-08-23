@@ -105,6 +105,11 @@
                 <i class="fas fa-history"></i> <span>Logs de Auditoria</span>
             </a>
         </asp:PlaceHolder>
+        <asp:PlaceHolder ID="phRelatoriosAdmin" runat="server">
+            <a href="<%= ResolveUrl("~/views/Relatorios.aspx") %>" class="nav-link <%= ObterClasseAtiva("Relatorios.aspx") %>">
+                <i class="fas fa-history"></i> <span>Relatórios</span>
+            </a>
+        </asp:PlaceHolder>
         
         <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" CssClass="nav-link text-danger mt-4" CausesValidation="false">
             <i class="fas fa-sign-out-alt"></i> <span>Sair</span>

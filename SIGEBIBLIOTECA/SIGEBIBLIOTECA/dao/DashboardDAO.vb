@@ -48,7 +48,8 @@ Namespace SIGEBIBLIOTECA.DAO
                 End Using
 
                 ' 3. Receita Total (Soma de aluguéis e multas cobradas)
-                Dim sqlReceita As String = "SELECT IFNULL(SUM(valor_total_pago), 0) FROM emprestimos"
+                ' Em DashboardDAO.vb -> ObterEstatisticasGerais():
+                Dim sqlReceita As String = "SELECT IFNULL(SUM(IFNULL(valor_total_pago, valor_pago_adiantado)), 0) FROM emprestimos"
                 Using cmd As New MySqlCommand(sqlReceita, conn)
                     stats.ReceitaTotal = Convert.ToDecimal(cmd.ExecuteScalar())
                 End Using
