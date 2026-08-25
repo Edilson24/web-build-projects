@@ -39,9 +39,6 @@ class AdminController extends Controller {
         ]);
     }
 
-    /**
-     * Adicionar novo utilizador via Admin
-     */
     public function storeUser(): void {
         $this->checkAdmin();
         
@@ -63,9 +60,6 @@ class AdminController extends Controller {
         exit;
     }
 
-    /**
-     * Editar dados do utilizador
-     */
     public function updateUser(): void {
         $this->checkAdmin();
 
@@ -89,14 +83,10 @@ class AdminController extends Controller {
         exit;
     }
 
-    /**
-     * Eliminar utilizador do sistema
-     */
     public function deleteUser(): void {
         $this->checkAdmin();
         $targetUserId = (int)($_GET['id'] ?? 0);
 
-        // Impede que o administrador elimine a sua própria conta
         if ($targetUserId > 0 && $targetUserId !== (int)$_SESSION['user_id']) {
             $this->userModel->deleteUser($targetUserId);
         }

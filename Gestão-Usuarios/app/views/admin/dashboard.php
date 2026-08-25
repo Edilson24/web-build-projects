@@ -14,6 +14,11 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
         }
         :root[data-theme="light"] {
             --bg-body: #f8fafc; --bg-card: #ffffff; --text-main: #0f172a; --text-sub: #64748b; --border-color: #e2e8f0; --accent: #0284c7; --input-bg: #ffffff;
+
+            --bg-body: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-sub: #94a3b8; --border-color: #334155; --accent: #38bdf8;
+        }
+        :root[data-theme="light"] {
+            --bg-body: #f8fafc; --bg-card: #ffffff; --text-main: #0f172a; --text-sub: #64748b; --border-color: #e2e8f0; --accent: #0284c7;
         }
         body { background-color: var(--bg-body); color: var(--text-main); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
         header { background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
@@ -27,6 +32,7 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
         th { color: var(--text-sub); }
         .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
@@ -51,6 +57,9 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
         .btn-cancel { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 15px; border-radius: 4px; cursor: pointer; }
         .btn-save { background: var(--accent); color: #000; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-action { text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #000; display: inline-block; margin-right: 5px; }
+        .btn-toggle { background: #eab308; }
+        .btn-status { background: #38bdf8; }
     </style>
 </head>
 <body>
@@ -91,6 +100,8 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
                 <h3 style="margin:0; color:var(--accent);">Gestão de Utilizadores</h3>
                 <button class="btn-add" onclick="openCreateModal()">+ Adicionar Membro</button>
             </div>
+
+            <h3 style="margin-top:0; color:var(--accent);">Gestão de Utilizadores</h3>
             <table>
                 <thead>
                     <tr>
@@ -123,6 +134,7 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
                             <td><?= date('d/m/Y', strtotime($u['created_at'])) ?></td>
                             <td>
                                 <?php if ((int)$u['id'] !== (int)$currentUser['id']): ?>
+
                                     <!-- Botão Editar (Lápis) -->
                                     <button class="btn-icon" title="Editar Utilizador" onclick='openEditModal(<?= json_encode($u) ?>)'>
                                         ✏️
@@ -131,6 +143,13 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
                                     <!-- Botão Eliminar (Lixeira) -->
                                     <a href="/admin/usuario/eliminar?id=<?= $u['id'] ?>" class="btn-icon btn-icon-danger" title="Eliminar Utilizador" onclick="return confirm('Tem certeza de que deseja eliminar permanentemente este utilizador?');">
                                         🗑️
+
+                                    <a href="/admin/status?id=<?= $u['id'] ?>" class="btn-action btn-status" onclick="return confirm('Deseja alterar o status deste utilizador?');">
+                                        <?= $u['status'] === 'ativo' ? 'Bloquear' : 'Ativar' ?>
+                                    </a>
+                                    <a href="/admin/role?id=<?= $u['id'] ?>" class="btn-action btn-toggle" onclick="return confirm('Deseja alterar o nível de acesso deste utilizador?');">
+                                        Mudar Nível
+
                                     </a>
                                 <?php else: ?>
                                     <span style="font-size:0.8rem; color:var(--text-sub);">(Sua conta)</span>
@@ -142,6 +161,7 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
             </table>
         </div>
     </div>
+
 
     <!-- Modal Adicionar Utilizador -->
     <div id="createModal" class="modal">
@@ -247,6 +267,7 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
             }
         }
     </script>
+
 
 </body>
 </html>

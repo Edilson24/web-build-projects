@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Sistema de Gestão de Utilizadores (UserSystem)
 
 Aplicação web desenvolvida em PHP utilizando o padrão arquitetural **MVC (Model-View-Controller)**, focada no gerenciamento de perfis, controle de permissões de acesso, suporte técnico e gestão administrativa.
@@ -106,4 +106,4 @@ projeto/
 │   └── uploads/          # Diretório para armazenamento de fotos de perfil
 │
 └── README.md             # Instruções de instalação, execução e documentação
->>>>>>> 722edb7 (Transição: de Gestão de Usuário para Igreja.)
+
