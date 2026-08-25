@@ -3,19 +3,31 @@
  * Front Controller - Ponto de Entrada Único
  */
 
-// Iniciar sessão
 session_start();
 
-// Carregar arquivos de infraestrutura e controllers
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../app/controllers/Router.php';
 require_once __DIR__ . '/../app/controllers/HomeController.php';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/UserController.php';
 
-// Instanciar o roteador
 $router = new Router();
 
-// Definir as rotas do sistema
+// Rotas Landing Page
 $router->add('GET', '/', [HomeController::class, 'index']);
 
-// Executar o roteamento da requisição atual
+// Rotas Autenticação
+$router->add('GET', '/register', [AuthController::class, 'showRegister']);
+$router->add('POST', '/register', [AuthController::class, 'register']);
+$router->add('GET', '/login', [AuthController::class, 'showLogin']);
+$router->add('POST', '/login', [AuthController::class, 'login']);
+$router->add('GET', '/logout', [AuthController::class, 'logout']);
+
+// Rotas do Perfil do Utilizador
+$router->add('GET', '/perfil', [UserController::class, 'profile']);
+$router->add('POST', '/perfil/atualizar', [UserController::class, 'updateProfile']);
+$router->add('POST', '/perfil/social/adicionar', [UserController::class, 'addSocial']);
+$router->add('GET', '/perfil/social/remover', [UserController::class, 'removeSocial']);
+
+// Executar o roteamento
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

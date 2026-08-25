@@ -1,0 +1,265 @@
+Guia de desenvolvimento - Roadmap
+
+
+## 📅 FASE 1: Preparação do Ambiente e Infraestrutura Inicial
+
+### Passo 1.1 — Estruturação de Diretórios do Projeto
+
+Organizar as pastas respeitando a arquitetura **MVC (Model-View-Controller)** e os *Detalhes Técnicos*:
+
+
+projeto/
+│
+├── app/
+│   ├── controllers/   # Regras de fluxo e intermediação
+│   ├── models/        # Regras de negócio e consultas SQL (PDO)
+│   └── views/         # Interfaces HTML/CSS/JS
+│       ├── admin/     # Telas do painel administrativo
+│       ├── user/      # Telas do perfil e configurações
+│       └── auth/      # Telas de login, registro e recuperação
+│
+├── bootstrap/
+│   └── PhpServerManager.php # Gerenciador do servidor embutido
+│
+├── config/
+│   └── database.php   # Conexão PDO com o MySQL
+│
+├── database/
+│   └── database.sql   # Script SQL de criação do banco
+│
+├── logs/
+│   └── error.log      # Registo interno de falhas e exceções
+│
+├── public/            # Diretório público exposto pelo PHP
+│   ├── index.php      # Front Controller (Ponto de entrada único)
+│   ├── css/           # Estilos e temas (Claro / Escuro)
+│   ├── js/            # Scripts frontend (Validações, Modais)
+│   └── uploads/       # Fotografias de perfil
+│
+├── README.md          # Documentação e instruções de execução
+└── index.php          # Script de atalho para inicializar via PhpServerManager
+
+```
+
+### Passo 1.2 — Execução do Script SQL no Banco de Dados
+
+1. Iniciar o **MySQL Server** localmente na porta `3306`.
+
+
+2. Executar o ficheiro `database/database.sql` via **MySQL Workbench** para criar o banco `sistema_gestao_db` e as tabelas (`usuarios`, `usuario_redes_sociais`, `tokens_recuperacao`, `solicitacoes_suporte`).
+
+### Passo 1.3 — Conexão PDO e Tratamento de Erros/Logs
+
+1. Criar o ficheiro `config/database.php` utilizando **PDO** para comunicação com o MySQL:
+
+
+* Configurar `PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION`.
+
+
+* Centralizar o bloco `try-catch` para redirecionar falhas de conexão para o log em `logs/error.log`, exibindo apenas mensagens amigáveis ao utilizador.
+
+
+
+
+2. Criar uma classe auxiliar `Logger` para centralizar a gravação de erros em `logs/error.log`.
+
+
+
+### Passo 1.4 — Implementação do `PhpServerManager`
+
+1. Criar a classe `bootstrap/PhpServerManager.php` para gerenciar a inicialização do **PHP Built-in Server** (`php -S`):
+
+
+* Implementar método para buscar porta livre dinâmica a partir da porta `8000` (testando `8000`, `8001`, etc.).
+
+
+* Iniciar o processo do servidor e abrir automaticamente o navegador padrão na URL gerada.
+
+
+
+
+
+---
+
+## 📅 FASE 2: Sistema de Rotas e Núcleo do MVC
+
+### Passo 2.1 — Implementação do Front Controller e Roteamento
+
+1. No arquivo `public/index.php`, capturar a URL requisitada via `$_SERVER['REQUEST_URI']`.
+2. Criar uma classe `Router` simples que analisa a URL, identifica o Controller correspondente e chama o método indicado.
+3. Definir as rotas principais:
+* `/` $\rightarrow$ Landing Page (Pública)
+* `/login` e `/register` $\rightarrow$ Autenticação
+* `/recuperar-senha` $\rightarrow$ Solicitação de token
+* `/perfil` $\rightarrow$ Área do Utilizador
+* `/admin` $\rightarrow$ Painel do Administrador
+
+
+
+---
+
+## 📅 FASE 3: Autenticação, Sessões e Cookies
+
+### Passo 3.1 — Registro de Utilizador (Cadastro)
+
+1. **View:** Criar formulário em `app/views/auth/register.php` com campos de Nome, E-mail, Senha e Confirmação de Senha.
+2. **Controller/Model:**
+* Validar se o e-mail informado já existe no banco de dados (`usuarios.email`). Rejeitar cadastros duplicados.
+* Criptografar a senha utilizando a função nativa `password_hash($senha, PASSWORD_DEFAULT)`.
+
+
+* Inserir o utilizador com status `ativo` e perfil `usuario`.
+
+
+
+### Passo 3.2 — Autenticação de Login e Opção "Lembrar-me"
+
+1. **View:** Criar tela de login em `app/views/auth/login.php` com campos de E-mail, Senha, Checkbox "Lembrar-me" (7 dias) e link "Esqueceu a senha?".
+
+
+2. **Lógica Backend:**
+* Validar credenciais via `password_verify($senha, $hashBanco)`.
+
+
+* Ao autenticar com sucesso: criar a sessão PHP `$_SESSION['user_id']`.
+
+
+* Se o checkbox "Lembrar-me" estiver marcado: gerar um token aleatório (`bin2hex(random_bytes(32))`), salvar na coluna `remember_token` da tabela `usuarios` e gravar o cookie seguro `remember_me` no navegador com validade de 7 dias (`86400 * 7`).
+
+
+
+
+3. **Logout:**
+* Destruir a sessão (`session_destroy()`).
+
+
+* Limpar o token no banco de dados e expirar/excluir o cookie no navegador.
+
+
+
+
+
+### Passo 3.3 — Recuperação de Senha por E-mail (PHPMailer / SMTP)
+
+1. **Solicitação:** Utilizador informa o e-mail na tela de recuperação.
+2. **Token:** O sistema gera um token único com expiração de 1 hora na tabela `tokens_recuperacao`.
+3. **Envio de E-mail:** Enviar e-mail via PHPMailer usando SMTP do Gmail (conta gratuita com Senha de App) contendo o link `/redefinir-senha?token=XXXX`.
+
+
+4. **Redefinição:** Validar o token e autorizar o utilizador a criar uma nova senha armazenada via `password_hash()`.
+
+
+
+---
+
+## 📅 FASE 4: Área do Utilizador (Perfil, Temas e Suporte)
+
+### Passo 4.1 — Landing Page Pública e Verificação de Cookies
+
+1. Construir a Landing Page (`app/views/user/landing.php`) pública com um banner de atração para cadastro/login.
+2. Se o visitante não estiver logado, apresentar um modal/sugestão convidando a criar uma conta.
+3. Se existir um cookie `remember_me` válido, autenticar automaticamente o utilizador.
+
+### Passo 4.2 — Perfil do Utilizador e Integrações Dinâmicas
+
+1. **Avatar Padrão (UI Avatars):** Se o utilizador não possuir foto salva no servidor, exibir na interface a imagem gerada via URL: `[https://ui-avatars.com/api/?name=Nome+Apelido&background=random](https://ui-avatars.com/api/?name=Nome+Apelido&background=random)`.
+2. **Upload de Foto de Perfil:**
+* Validar no backend o tamanho máximo e os MIME Types permitidos (ex: apenas `image/jpeg`, `image/png`).
+
+
+* Mover o arquivo para `public/uploads/` e atualizar o nome do arquivo no banco.
+
+
+3. **Redes Sociais Incrementais:**
+* Permitir adicionar/remover URLs na tabela `usuario_redes_sociais`.
+* **Identificação Automática:** No frontend/backend, verificar a URL (ex: `github.com`, `instagram.com`) e renderizar o ícone correspondente.
+
+
+4. **Customização de Tema:**
+* Criar opções de personalização visual em `Configurações/Settings`.
+* Salvar a preferência (`dark` ou `light`) na coluna `tema_preferido` e aplicar no atributo `<html data-theme="...">` do layout.
+
+
+
+### Passo 4.3 — Middleware de Verificação de Status e Suporte para Bloqueados
+
+1. Criar uma verificação global de segurança no Controller Base:
+* Em **toda requisição**, consultar a coluna `status` do utilizador logado no banco de dados.
+
+
+2. Se o status for `inativo`:
+* Suspender imediatamente as permissões e exibir o modal fixo e inamovível de conta desativada.
+* Apresentar o formulário de pedido de assistência no modal.
+* Ao submeter, gravar a mensagem na tabela `solicitacoes_suporte` (status `pendente`).
+
+
+
+---
+
+## 📅 FASE 5: Painel do Administrador
+
+### Passo 5.1 — Dashboard Administrativo
+
+1. Proteger as rotas `/admin/*` permitindo apenas utilizadores com `tipo_perfil = 'admin'`.
+2. Criar a interface da Dashboard com menu lateral, métricas gerais de cadastros e total de solicitações de suporte pendentes.
+
+### Passo 5.2 — CRUD Completo de Utilizadores
+
+1. Tabela de Listagem:** Exibir foto, nome, e-mail, data de criação, status e ações.
+2. Criação pelo Admin:
+* Criar modal/formulário para o admin cadastrar novos utilizadores.
+* Definir senha temporária em texto limpo e exibir na tela para impressão.
+* Criptografar e armazenar via `password_hash()` marcando `primeiro_acesso = 1` no banco (obrigando o utilizador a trocar a senha no primeiro acesso).
+
+
+
+
+3. **Desativação e Remoção:**
+* Botão para alternar status entre `ativo` e `inativo`.
+* Botão para eliminar conta com modal de confirmação de exclusão permanente.
+
+
+
+### Passo 5.3 — Central de Atendimento ao Suporte
+
+1. Criar tela no painel do admin listando os pedidos de suporte da tabela `solicitacoes_suporte`.
+2. Adicionar botão **"Reativar Conta"**:
+* Atualiza o `status` do utilizador para `ativo`.
+* Marca a solicitação de suporte como `resolvido`.
+
+
+
+---
+
+## 📅 FASE 6: Segurança, Testes e Documentação (Entregáveis)
+
+### Passo 6.1 — Sanitização e Camada de Segurança
+
+1. **XSS:** Aplicar `htmlspecialchars()` em todas as saídas de dados exibidas nas Views.
+
+
+2. **SQL Injection:** Garantir que todas as consultas SQL na Model utilizem *PDO Prepared Statements* com binding de parâmetros.
+
+
+3. **CSRF:** Adicionar tokens CSRF nos formulários `POST`.
+
+### Passo 6.2 — Criação do README.md
+
+Elaborar o ficheiro `README.md` detalhado com as instruções de instalação:
+
+* Requisitos do ambiente (PHP 8.x e MySQL).
+
+
+* Configuração do banco de dados e execução do `database.sql`.
+
+
+* Comando de inicialização da aplicação (`php index.php` / `PhpServerManager`).
+
+
+
+### Passo 6.3 — Pacote de Entrega do Projeto
+
+1. Estruturar os relatórios e capturas de tela para elaboração do documento PDF do projeto.
+
+
+2. Compactar o código-fonte em formato `.zip` mantendo a estrutura de diretórios limpa (sem arquivos temporários).

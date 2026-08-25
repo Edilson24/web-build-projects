@@ -1,0 +1,88 @@
+# Descrição de Desenvolvimento - Regras de Negócio e Funcionalidades
+
+## 1. Visão Geral do Sistema
+O sistema é uma aplicação web dividida em duas áreas principais:
+1. Painel Administrativo: Acesso restrito para gestão completa de utilizadores e suporte.
+2. Área do Utilizador / Landing Page: Acesso público inicial sem credenciais, com opção de navegação, autenticação e gestão de perfil personalizado.
+
+A aplicação utiliza cookies de navegação para a experiência pública/sugestões e suporte à funcionalidade "Lembrar-me", com validade de 7 dias, conforme especificado nos requisitos.
+
+---
+
+## 2. Área do Utilizador (Pública e Logado)
+
+### 2.1. Landing Page e Acesso Público
+- Qualquer visitante pode acessar a Landing Page sem necessidade de autenticação.
+- A Landing Page apresenta uma sugestão visual/banner convidando o visitante a criar uma conta ou iniciar sessão.
+- Na tela de login, o utilizador dispõe de:
+  - Opção "Lembrar-me", que armazena um cookie seguro válido por 7 dias.
+  - Opção de "Recuperar Senha".
+
+### 2.2. Recuperação de Senha
+- Ao solicitar a recuperação de senha, o utilizador insere o e-mail cadastrado.
+- O sistema gera um token temporário único com prazo de expiração (ex: 1 hora) e armazena na tabela de tokens.
+- É enviado um e-mail ao utilizador (via PHPMailer / SMTP) contendo o link com o token para redefinição de senha segura.
+
+### 2.3. Cadastro e Perfil do Utilizador
+- Formulário de Cadastro - Campos Obrigatórios:
+  - Nome Completo
+  - E-mail (o sistema rejeita e-mails duplicados; cada e-mail pertence a apenas uma conta)
+  - Senha e Confirmação de Senha (dois campos de validação)
+- Campos Opcionais:
+  - Foto de Perfil (upload verificado por tipo/extensão e tamanho no backend)
+  - Nome de Utilizador (`@user_name`)
+  - Bio/Descrição pessoal
+  - Links de Redes Sociais (armazenados de forma incremental na base de dados)
+  - Música de Perfil (integração via URL/API de reprodução curta)
+
+- Trativa de Foto de Perfil Padrão:
+  - Caso o utilizador não forneça uma foto de perfil no cadastro, o sistema utiliza a API pública e gratuita `ui-avatars.com` para gerar automaticamente um avatar com as iniciais do nome e apelido do utilizador.
+
+- Reconhecimento Inteligente de Redes Sociais:
+  - Ao inserir um link de rede social (ex: `github.com/...`, `instagram.com/...`), o sistema identifica o domínio e exibe dinamicamente o ícone e nome correspondente da plataforma no perfil do utilizador.
+
+### 2.4. Interface e Personalização do Perfil
+- A interface da área logada adota um estilo moderno e limpo, inspirado no layout do GitHub.
+- Configurações de Aparência: O utilizador pode alterar o tema visual (ex: claro/escuro) e preferências de exibição do seu perfil. As preferências do tema são salvas na base de dados e aplicadas dinamicamente via CSS.
+
+### 2.5. Bloqueio de Utilizador Desativado e Suporte Integrado
+- A cada requisição/navegação, a aplicação consulta a flag de `status` do utilizador na base de dados (inclusive durante sessões ativas via cookie).
+- Se a conta estiver com status `inativo`:
+  - O acesso a qualquer funcionalidade interna é imediatamente suspenso.
+  - Um modal/pop-up fixo e persistente é exibido sobre a tela informando que a conta foi desativada, garantindo que os dados do utilizador permanecem seguros.
+  - O modal possui o botão "Solicitar Assistência / Suporte".
+  - Ao clicar, o utilizador envia uma mensagem diretamente pelo sistema, criando um registo de solicitação na base de dados (tabela `solicitacoes_suporte`).
+
+---
+
+## 3. Painel do Administrador
+
+### 3.1. Autenticação e Dashboard
+- Ao autenticar-se como Administrador, o utilizador é redirecionado para o Dashboard Principal com métricas gerais e menu lateral de navegação.
+
+### 3.2. Gestão de Utilizadores (CRUD Completo)
+- Tabela de Gestão de Utilizadores com as colunas:
+  - Foto + Nome Completo
+  - E-mail
+  - Data de Criação da Conta
+  - Status (`Ativo` / `Inativo`)
+  - Ações (Ícones de Editar, Desativar/Ativar e Eliminar)
+- Exclusão com Segurança: Ao clicar no ícone de eliminar, um modal de confirmação alerta o administrador de que a remoção apagará permanentemente os dados daquele utilizador.
+
+### 3.3. Criação de Utilizador pelo Administrador e Credenciais
+- O administrador pode criar manualmente a conta de um utilizador.
+- Senha Temporária: O sistema gera ou permite definir uma senha temporária em texto limpo para impressão/exibição inicial.
+- Criptografia: A senha é tratada via `password_hash()` (Bcrypt/Argon2) antes de ser persistida na base de dados, cumprindo as exigências de segurança.
+- Primeiro Acesso: O utilizador criado pelo admin é sinalizado para alterar obrigatoriamente a senha temporária no seu primeiro login.
+
+### 3.4. Central de Notificações e Atendimento de Suporte
+- O painel do administrador recebe e lista as solicitações de suporte enviadas pelos utilizadores bloqueados.
+- O administrador pode visualizar a mensagem de pedido de suporte e reativar a conta diretamente pelo painel com um clique, atualizando o status do utilizador para `ativo`.
+
+---
+
+## 4. Regras do Sistema e Integridade de Dados
+
+1. Unicidade de E-mail: Rejeição automática no cadastro/edição caso o e-mail informado já exista na base de dados.
+2. Validação Rigorosa de Uploads: O backend valida o MIME Type e extensão de todos os ficheiros (ex: impede o envio de ficheiros de áudio `.mp3` para o campo de foto de perfil).
+3. Encerramento de Sessões: O logout encerra completamente a sessão ativa no servidor e expira/destrói o cookie de "Lembrar-me".
