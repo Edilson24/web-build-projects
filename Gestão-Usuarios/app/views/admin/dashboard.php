@@ -65,7 +65,7 @@ if (!isset($stats) || !is_array($stats)) { $stats = []; }
 <body>
 
     <header>
-        <div style="font-weight:bold; color:var(--accent); font-size:1.2rem;">UserSystem | Painel Admin</div>
+        <div style="font-weight:bold; color:var(--accent); font-size:1.2rem;">UserSystem | Administrador</div>
         <div>
             <a href="/perfil">Meu Perfil</a>
             <a href="/suporte">Suporte</a>

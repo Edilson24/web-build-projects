@@ -1,0 +1,59 @@
+1. Sistema de Gestão de Igreja
+2. Java web, tomcat 10.1.57, Intelij 2026.1
+3. MySQL Workbench para base de dados.
+4. Projeto para apresentação em sala de aula
+
+
+
+Regra de Negócio
+1. Níveis de acesso: Administrador, Secretário, Tesoureiro e Pastor.
+
+
+
+2. Administrador
+2.1 Todos níveis de acesso + acesso a verificação de logs.
+
+
+3. Secretário
+3.1 E o secretário pode fazer gestão dos membros da igreja: Registar membro, Editar dados, Remover membro, na tabela de membros Pesquisar membro
+3.2 Ao cadastrar membro da igreja devem constar os seguintes dados: nome, idade, estado sivil, estado(baptizado/aguardando batismo/não baptizado), Data de entrada na igreja, grupo ao qual irá pertencer (grupos de jovens, mulheres, homens, etc) na ultima coluna irá terá ícone de poder puxar um modal para visualizar detalhes do menbro e outro para editar. 
+3.3 Deve haver uma forma de relacionar os membro da igreja por parentesco. Por exemplo ao cadastrar uma mulher, haver a possibilidade de indicar as outras pessoas que sejam membros e que tenha algum laço de parentesco com ela. O mesmo para qualquer pessoa.
+
+3.4 O secretário pode marcar na lista de membros não batizados, um grupo de pessoas que pretendem batizar. A seleção de cada membro pode ser feita através de checkbox. Então irá selecionar as pessoas e colocar a data de batismo, e essa informação deverá aparecer na dashboard do pastor selecionado
+3.5 Ao fazer marcação de babtismo, o secretário tem o limite de selecionar no máximo 10 membros para batisar naquela data. Para evitar que sejam selecionados vários membros a serem batizados no mesmo dia e pelo mesmo pastor. E a lista dos marcados para boatismo deve ter a possibilidade de imprimir.
+
+3.6 O secretário cadastra também pastores no limite máximo de 3.
+
+3.7 Reforçando a questão de relacionamento/parentesco entre os membros: pode ser criada uma tabela de claves estrangeiras entre membros e o tipo de parentesco/relacionamento que os liga.
+
+3.8 Ao se marcar que tais crentes/membros serão batisados automaticamento o seu estado(status) deixa de ser "não batizado" para "aguardando batismo". Ao se efetuar o batismo o estado dos mesmo deve mudar para batisado.
+
+3.9 Na tela de gestão de membros, terá uma tabela com todos membros cadastrados e seus dados referidos no ponto 3.2. Tem todos dados precisam constar na tabela por questões de espaço, alguns serão visualizados no modal de visualização. Na tabela do banco de dados do registro de membro pode estar divididos e duas ligadas por chaves estrangeiras. As principais que precisam aparcer na interface são: (baptizado/aguardando batismo/não baptizado), Data de entrada na igreja, grupo ao qual irá pertencer (grupos de jovens, mulheres, homens,). As outras informações como o parentesco que serão visualizados no modal podem estar numa outra tabela no banco de dados ligados atraves de FK.
+
+
+
+4. Tesoureiro
+4.1 A tesouraria da igreja terá uma dashboard dedicada para questões financeiras. Com elementos modernos na tela como cards de resumos: total de dízimos, total de ofertas, total de ação de graça (ação de graça se refere a um valor que o crente dá voluntariamente também, por ocasião de alguma celebração, seja aniversário, graduação, promoção no trabalho ou qualquer conquista, então o crente oferece a igreja um valor a sua escolha). Gráfico de linhas (no caso seria de duas linhas para entradas e saidas) que mostra o fluxo de caixa ao longo dos meses.
+
+4.2 O tesoureiro terá uma tela com tabela de registros de contribuições (dízimos ou ação de graça), onde terá como adicionar um novo registro através de modal. No modal poderá selecionar o membro que está fazendo a contribuição e o tipo (se é dízimo ou oção de graça), se for ação de graça deverá aparecer um campo opcional de nota onde deverá constar qual ocasião da ação de graça
+
+4.3 As coletas de dízimo e ação de graças vamos conciderar ofertas individuais, ao serem registrados deve também constar o nome do membro. Por outro lado temos a contribuição coletiva feita em dias de reuniões/culto em que todos de uma vez dão sua contribuição. A estas contribuições coletivas chamamos de ofertório. O ofertório é registado junto da data.
+
+4.4 Na tela de registro de contribuições deve ter uma tabela que permita filtrar e imprimir. Deve ter as seguintes colunas: nome, tipo de contribuição (dízimo ou Ação de Graça), valor, na ultima coluna deve ter dois icones: um para ver os detalhes daquela contribuição e outro para editar. E ao clicar nesses ícones irão abrir um modal.
+
+4.5 Ao registrar uma saida (retirada de algum valor para um determinado fim) deve ser preenchido obrigatoriamente a nota. Onde ficará registado a finalidade da retirada desse valor.
+
+5. Pastor
+5.1 Dashboard com informações resumidas de todas as áreas: finanças e secretariado. Na dashboard terá cards e gráfico de linhas que mostra as variações de numero de entrada de membros ao longo do tempo
+5.2 Impossibilitado de fazer qualquer operação, seja de registro financeiro ou remoção de membros. Apenas tem possibilidade de visualização de membros
+
+6. Sistema
+6.1 O sistema deve contar com uma forma de gerir logs para todos os departamentos. Desde os cadastros dos membros, marcações de batimos, movimentações financeiras, edições, em tudo. Porque entende-se cada nivel de acesso possa ser possivel que mais de um trabalhem. Por exemplo na tesouraria pode ser um grupo de 7 pessoas trabalhando lá.
+
+6.2 Os logs devem estar divididos em categoria. Logs da área da tesouraria, do secretariado, pastor.
+
+6.3 A interface do sistema terá um menu lateral que será utilizado/importado para funcionar 
+
+6.4 O sistema pode fazer carregamento de imagens de perfil dos usuários, caso ao ser cadastrado usuário do sistema sem uma imagem que seja usado "ui-avatars.com" para colocar no lugar da foto a inicial do nome e apelido.
+
+6.5 Cores da preferência da cliente: azul, branco, vermelho(para status inativos por exemplo), branco
