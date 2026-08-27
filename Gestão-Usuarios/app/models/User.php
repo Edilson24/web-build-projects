@@ -119,4 +119,104 @@ class User {
         $stmt = $this->db->prepare("DELETE FROM usuario_redes_sociais WHERE id = :id AND usuario_id = :usuario_id");
         return $stmt->execute([':id' => $linkId, ':usuario_id' => $userId]);
     }
+
+  /**
+     * Retorna a lista total de utilizadores registados no sistema
+     */
+    public function getAllUsers(): array {
+        $stmt = $this->db->query("SELECT id, nome, email, user_name, tipo_perfil, status, created_at FROM usuarios ORDER BY id DESC");
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Alterna o status do utilizador entre 'ativo' e 'inativo'
+     */
+    public function toggleStatus(int $userId): bool {
+        $stmt = $this->db->prepare("UPDATE usuarios SET status = IF(status = 'ativo', 'inativo', 'ativo') WHERE id = :id");
+        return $stmt->execute([':id' => $userId]);
+    }
+
+    /**
+     * Alterna o nível do perfil entre 'admin' e 'usuario'
+     */
+    public function toggleRole(int $userId): bool {
+        $stmt = $this->db->prepare("UPDATE usuarios SET tipo_perfil = IF(tipo_perfil = 'admin', 'usuario', 'admin') WHERE id = :id");
+        return $stmt->execute([':id' => $userId]);
+    }
+
+    /**
+     * Retorna estatísticas gerais do sistema para o Dashboard
+     */
+    public function getSystemStats(): array {
+        $totalUsers   = $this->db->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
+        $activeUsers  = $this->db->query("SELECT COUNT(*) FROM usuarios WHERE status = 'ativo'")->fetchColumn();
+        $adminUsers   = $this->db->query("SELECT COUNT(*) FROM usuarios WHERE tipo_perfil = 'admin'")->fetchColumn();
+        
+        // Proteção caso a tabela chamados_suporte ainda não contenha registros
+        try {
+            $totalTickets = $this->db->query("SELECT COUNT(*) FROM chamados_suporte")->fetchColumn();
+        } catch (Exception $e) {
+            $totalTickets = 0;
+        }
+
+        return [
+            'total_users'   => $totalUsers,
+            'active_users'  => $activeUsers,
+            'admin_users'   => $adminUsers,
+            'total_tickets' => $totalTickets
+        ];
+    }
+
+    /**
+     * Cria um utilizador via Painel Administrativo
+     */
+    public function createUserByAdmin(array $data): bool {
+        $sql = "INSERT INTO usuarios (nome, email, senha, tipo_perfil, status, primeiro_acesso) 
+                VALUES (:nome, :email, :senha, :tipo_perfil, :status, 1)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':nome'        => $data['nome'],
+            ':email'       => $data['email'],
+            ':senha'       => password_hash($data['senha'], PASSWORD_DEFAULT),
+            ':tipo_perfil' => $data['tipo_perfil'],
+            ':status'      => $data['status']
+        ]);
+    }
+
+    /**
+     * Atualiza os dados de um utilizador via Admin
+     */
+    public function updateUserByAdmin(int $id, array $data): bool {
+        if (!empty($data['senha'])) {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, tipo_perfil = :tipo_perfil, status = :status, senha = :senha WHERE id = :id";
+            $params = [
+                ':nome'        => $data['nome'],
+                ':email'       => $data['email'],
+                ':tipo_perfil' => $data['tipo_perfil'],
+                ':status'      => $data['status'],
+                ':senha'       => password_hash($data['senha'], PASSWORD_DEFAULT),
+                ':id'          => $id
+            ];
+        } else {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, tipo_perfil = :tipo_perfil, status = :status WHERE id = :id";
+            $params = [
+                ':nome'        => $data['nome'],
+                ':email'       => $data['email'],
+                ':tipo_perfil' => $data['tipo_perfil'],
+                ':status'      => $data['status'],
+                ':id'          => $id
+            ];
+        }
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($params);
+    }
+
+    /**
+     * Elimina permanentemente um utilizador
+     */
+    public function deleteUser(int $id): bool {
+        $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id = :id");
+        return $stmt->execute([':id' => $id]);
+    }
+
 }
