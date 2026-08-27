@@ -23,7 +23,7 @@ define('DB_PASS', '');
 
 ### 2. Como Executar o Projeto
 
-Abra o terminal na pasta raiz do projeto.Inicie o servidor embutido do PHP apontando para a pasta pública public/:Bashphp -S localhost:8000 -t public
+Abra o terminal na pasta raiz do projeto.Inicie o servidor embutido do PHP apontando para a pasta pública public/:Bash "php -S localhost:8000 -t public"
 Acesse a aplicação no navegador através do endereço: http://localhost:8000
 ### Acesso de Administrador
 Para conceder permissões administrativas a uma conta registada, execute o seguinte comando no MySQL alterando o id para o ID do utilizador desejado:SQLUPDATE usuarios SET tipo_perfil = 'admin' WHERE id = 1;
