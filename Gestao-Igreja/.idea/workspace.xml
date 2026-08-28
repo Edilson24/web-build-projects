@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Feito!" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Usuários - 93% feito.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/documentacao/base_de_dados_base_hope.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/documentacao/base_de_dados_modificada_hope.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/documentacao/guia_de_desenvolvimento_hope.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/documentacao/base_de_dados_base.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/documentacao/descrição_de_desenvolvimento_hope.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/documentacao/descrição_de_desenvolvimento_hope.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/sigeigreja.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,27 +74,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Smart Tomcat.Tomcat: Gestao-Igreja.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Smart Tomcat.Tomcat: Gestao-Igreja.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\Gestao-Igreja\src\main\java\util" />
@@ -157,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787915909944</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Gestão de Usuários - 93% feito.">
+      <option name="closed" value="true" />
+      <created>1787916031516</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787916031516</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +184,7 @@
     <MESSAGE value="Transição: de Gestão de Usuário para Igreja." />
     <MESSAGE value="rr" />
     <MESSAGE value="Feito!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feito!" />
+    <MESSAGE value="Gestão de Usuários - 93% feito." />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Usuários - 93% feito." />
   </component>
 </project>

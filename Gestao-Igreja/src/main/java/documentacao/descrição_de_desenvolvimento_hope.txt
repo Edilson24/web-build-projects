@@ -11,20 +11,24 @@ Regra de Negócio
 
 
 2. Administrador
-2.1 Todos níveis de acesso + acesso a verificação de logs.
+2.1 Acesso a todas as funcionalidades do sistema e exclusivo acesso à tela de visualização e filtragem de logs de auditoria de todos os departamentos (Secretaria, Tesouraria e Pastoral).
 
 
 3. Secretário
 3.1 E o secretário pode fazer gestão dos membros da igreja: Registar membro, Editar dados, Remover membro, na tabela de membros Pesquisar membro
-3.2 Ao cadastrar membro da igreja devem constar os seguintes dados: nome, idade, estado sivil, estado(baptizado/aguardando batismo/não baptizado), Data de entrada na igreja, grupo ao qual irá pertencer (grupos de jovens, mulheres, homens, etc) na ultima coluna irá terá ícone de poder puxar um modal para visualizar detalhes do menbro e outro para editar. 
-3.3 Deve haver uma forma de relacionar os membro da igreja por parentesco. Por exemplo ao cadastrar uma mulher, haver a possibilidade de indicar as outras pessoas que sejam membros e que tenha algum laço de parentesco com ela. O mesmo para qualquer pessoa.
 
-3.4 O secretário pode marcar na lista de membros não batizados, um grupo de pessoas que pretendem batizar. A seleção de cada membro pode ser feita através de checkbox. Então irá selecionar as pessoas e colocar a data de batismo, e essa informação deverá aparecer na dashboard do pastor selecionado
-3.5 Ao fazer marcação de babtismo, o secretário tem o limite de selecionar no máximo 10 membros para batisar naquela data. Para evitar que sejam selecionados vários membros a serem batizados no mesmo dia e pelo mesmo pastor. E a lista dos marcados para boatismo deve ter a possibilidade de imprimir.
+3.2 Ao cadastrar um membro da igreja, devem constar os seguintes dados: nome, data de nascimento (a idade será calculada automaticamente pelo sistema), estado civil, estado/status (não batizado, aguardando batismo, batizado), data de entrada na igreja e grupo ao qual pertence (jovens, mulheres, homens, etc.). Na tabela de listagem, haverá um ícone para abrir o modal de detalhes completos e outro para edição dos dados.
 
-3.6 O secretário cadastra também pastores no limite máximo de 3.
+3.3 O sistema permite relacionar os membros entre si por vínculo de parentesco (ex: Pai, Mãe, Cônjuge, Filho, etc.) por meio de uma tabela associativa N:N no banco de dados.
 
-3.7 Reforçando a questão de relacionamento/parentesco entre os membros: pode ser criada uma tabela de claves estrangeiras entre membros e o tipo de parentesco/relacionamento que os liga.
+3.4 O Secretário realiza a agendamento de batismos criando um evento de Cerimônia de Batismo (registrando data, local e o pastor responsável). Ele seleciona os membros com status não batizado que participarão do evento. O Secretário vincula candidatos a esse evento. O sistema faz a verificação: se o número de pessoas com status "Aguardando batismo" vinculadas àquela cerimônia específica atingir 10, a adição de novos membros é bloqueada.
+O status muda para "Aguardando batismo" ao vincular à cerimônia. Após o evento, o Pastor (ou o Secretário com base na confirmação do Pastor) conclui a chamada individual, alterando o status dos confirmados para "Batizado".
+
+3.5 Em cada Cerimônia de Batismo, há um limite estrito de no máximo 10 membros selecionados para aquela data e pastor. Ao serem vinculados à cerimônia, o status desses membros muda automaticamente de não batizado para aguardando batismo. A lista de candidatos da cerimônia pode ser impressa.
+
+3.6 O secretário cadastra também pastores no limite máximo de 3. O cadastro do Pastor pelo Secretário passa a registrar os dados pessoais (gerando um registro de Membro) e, simultaneamente, cria a conta de acesso (gerando um registro de Usuario vinculado com email e senha).
+
+3.7 Reforçando a questão de relacionamento/parentesco entre os membros: pode ser criada uma tabela N:N de claves estrangeiras entre membros e o tipo de parentesco/relacionamento que os liga.
 
 3.8 Ao se marcar que tais crentes/membros serão batisados automaticamento o seu estado(status) deixa de ser "não batizado" para "aguardando batismo". Ao se efetuar o batismo o estado dos mesmo deve mudar para batisado.
 
@@ -37,20 +41,22 @@ Regra de Negócio
 
 4.2 O tesoureiro terá uma tela com tabela de registros de contribuições (dízimos ou ação de graça), onde terá como adicionar um novo registro através de modal. No modal poderá selecionar o membro que está fazendo a contribuição e o tipo (se é dízimo ou oção de graça), se for ação de graça deverá aparecer um campo opcional de nota onde deverá constar qual ocasião da ação de graça
 
-4.3 As coletas de dízimo e ação de graças vamos conciderar ofertas individuais, ao serem registrados deve também constar o nome do membro. Por outro lado temos a contribuição coletiva feita em dias de reuniões/culto em que todos de uma vez dão sua contribuição. A estas contribuições coletivas chamamos de ofertório. O ofertório é registado junto da data.
+4.3 As coletas de dízimo e ação de graças vamos considerar ofertas individuais, ao serem registrados deve também constar o nome do membro. Por outro lado temos a contribuição coletiva feita em dias de reuniões/culto em que todos de uma vez dão sua contribuição. A estas contribuições coletivas chamamos de ofertório. O ofertório é registado junto da data.
 
 4.4 Na tela de registro de contribuições deve ter uma tabela que permita filtrar e imprimir. Deve ter as seguintes colunas: nome, tipo de contribuição (dízimo ou Ação de Graça), valor, na ultima coluna deve ter dois icones: um para ver os detalhes daquela contribuição e outro para editar. E ao clicar nesses ícones irão abrir um modal.
 
 4.5 Ao registrar uma saida (retirada de algum valor para um determinado fim) deve ser preenchido obrigatoriamente a nota. Onde ficará registado a finalidade da retirada desse valor.
 
+4.6 Para resolver a contribuição de visitantes/grupos e doações anônimas mantendo a tabela financeira unificada, a modelagem técnica funciona assim:Campos na Tabela Financeira (movimentacoes_financeiras ou ofertorios/dizimos):membro_id (INT, NULLABLE): Se for um membro cadastrado da igreja, grava o ID dele. Se for anônimo ou visitante, fica NULL.tipo_contribuidor (ENUM / VARCHAR): 'MEMBRO', 'VISITANTE_INDIVIDUAL', 'VISITANTE_GRUPO', 'ANONIMO'.nome_contribuidor_externo (VARCHAR, NULLABLE): Se o usuário alternar o modal para "Visitante", o campo de selecionar membro é ocultado e abre este campo de texto livre para digitar o nome da pessoa ou do grupo visitante (ex: "Grupo de Jovens da Igreja X").Na Interface (Modal do Tesoureiro):Um toggle/radio button alterna entre [Membro da Igreja] e [Visitante / Outros].  Selecionando Membro: exige a busca no combo auto-complete de membros cadastrados.  Selecionando Visitante / Outros: libera um campo de texto manual para o nome e uma caixa para marcar se deseja manter anônimo.
+
 5. Pastor
 5.1 Dashboard com informações resumidas de todas as áreas: finanças e secretariado. Na dashboard terá cards e gráfico de linhas que mostra as variações de numero de entrada de membros ao longo do tempo
-5.2 Impossibilitado de fazer qualquer operação, seja de registro financeiro ou remoção de membros. Apenas tem possibilidade de visualização de membros
+5.2 O Pastor não realiza lançamentos financeiros nem exclusões/cadastros de membros. Sua permissão no sistema é de visualização geral, com a exceção operacional de realizar a Confirmação de Batismo: após a data da cerimônia, o Pastor acessa a lista da cerimônia e seleciona via checkbox individualmente os membros que compareceram e foram efetivamente batizados, atualizando o status deles no sistema para batizado.
 
 6. Sistema
 6.1 O sistema deve contar com uma forma de gerir logs para todos os departamentos. Desde os cadastros dos membros, marcações de batimos, movimentações financeiras, edições, em tudo. Porque entende-se cada nivel de acesso possa ser possivel que mais de um trabalhem. Por exemplo na tesouraria pode ser um grupo de 7 pessoas trabalhando lá.
 
-6.2 Os logs devem estar divididos em categoria. Logs da área da tesouraria, do secretariado, pastor.
+6.2 Os logs são categorizados por área (Secretaria, Tesouraria e Pastoral) e contêm identificação do usuário, ação realizada, data e hora. A visualização e filtragem desses logs é restrita ao Administrador.
 
 6.3 A interface do sistema terá um menu lateral que será utilizado/importado para funcionar 
 
