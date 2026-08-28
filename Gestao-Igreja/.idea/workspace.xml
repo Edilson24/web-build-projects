@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Feito!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +141,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787673343296</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="rr">
+      <option name="closed" value="true" />
+      <created>1787915630263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787915630263</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feito!">
+      <option name="closed" value="true" />
+      <created>1787915909944</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787915909944</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +165,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Transição: de Gestão de Usuário para Igreja." />
-    <option name="LAST_COMMIT_MESSAGE" value="Transição: de Gestão de Usuário para Igreja." />
+    <MESSAGE value="rr" />
+    <MESSAGE value="Feito!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feito!" />
   </component>
 </project>

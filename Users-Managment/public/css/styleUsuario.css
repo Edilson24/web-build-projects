@@ -1,0 +1,407 @@
+/* Transições suaves para alternância de tema */
+body.admin-layout,
+.card,
+.input-field,
+.select-field,
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Layout Principal do Usuário */
+.user-container {
+    max-width: 800px;
+    margin: 1rem auto 0 auto;
+    width: 100%;
+}
+
+/* Estilização dos Cards no perfil e configurações */
+.card-user {
+    background: var(--bg-card, #121824);
+    border: 1px solid var(--dash-border, rgba(212, 175, 55, 0.15));
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Cabeçalho do Perfil (Avatar + Info Principal) */
+.user-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--dash-border, rgba(255, 255, 255, 0.08));
+}
+
+.user-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-gold, #D4AF37);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.user-info-main h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary, #FFFFFF);
+    font-weight: 600;
+}
+
+.user-username {
+    color: var(--dash-text-muted, #8A94A6);
+    margin: 0.2rem 0 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* Grid de Informações de Visualização */
+.user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.user-info-item strong {
+    display: block;
+    color: var(--dash-text-muted, #8A94A6);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-info-item p {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    color: var(--text-primary, #E2E8F0);
+}
+
+/* Campos de Formulário (Configurações) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary, #E2E8F0);
+}
+
+.input-field,
+.select-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-input, #0B0E14);
+    border: 1px solid var(--dash-border, rgba(255, 255, 255, 0.1));
+    border-radius: 8px;
+    color: var(--text-primary, #FFFFFF);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.input-field:focus,
+.select-field:focus {
+    border-color: var(--accent-gold, #D4AF37);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+/* Suporte Explicito ao Tema Claro (Light Mode) */
+[data-theme="light"] {
+    --bg-card: #FFFFFF;
+    --dash-border: #E2E8F0;
+    --dash-text-muted: #64748B;
+    --text-primary: #0F172A;
+    --bg-input: #F8FAFC;
+}
+
+[data-theme="light"] .card-user {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .user-avatar {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Responsividade para Telas Menores */
+@media (max-width: 600px) {
+    .user-profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ações do Formulário de Configurações */
+.form-actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+textarea.input-field {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Sidebar Reutilizável */
+.sidebar {
+    width: 260px;
+    background-color: var(--dash-card-bg) !important;
+    border-right: 1px solid var(--dash-border) !important;
+    box-shadow: var(--dash-shadow);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    flex: 1;
+}
+
+.menu-label {
+    font-size: 0.75rem;
+    color: var(--dash-text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: var(--dash-text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   LIFTER - Estilos Específicos do Usuário & Configurações
+   ========================================================================== */
+
+/* Variáveis do Tema */
+:root {
+    --user-bg-main: #0b0e14;
+    --user-bg-card: #121824;
+    --user-border: rgba(212, 175, 55, 0.2);
+    --user-text-primary: #FFFFFF;
+    --user-text-muted: #8A94A6;
+    --user-gold: #D4AF37;
+    --user-input-bg: #06090e;
+}
+
+[data-theme="light"] {
+    --user-bg-main: #F4F6F8;
+    --user-bg-card: #FFFFFF;
+    --user-border: #E2E8F0;
+    --user-text-primary: #0F172A;
+    --user-text-muted: #64748B;
+    --user-input-bg: #F8FAFC;
+}
+
+/* Container do Formulário */
+.user-container {
+    max-width: 750px;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.card-user {
+    background-color: var(--user-bg-card);
+    border: 1px solid var(--user-border);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: var(--user-text-primary);
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+}
+
+/* Componente de Upload de Avatar */
+.avatar-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--user-border);
+}
+
+.user-avatar-preview {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--user-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+.avatar-upload-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.file-input-hidden {
+    display: none;
+}
+
+.btn-outline-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--user-gold);
+    color: var(--user-gold);
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .btn-outline-gold:hover {
+        background-color: rgba(212, 175, 55, 0.15);
+    }
+
+    .upload-hint {
+        font-size: 0.75rem;
+        color: var(--user-text-muted);
+    }
+
+    /* Alinhamento de Formulários (Flexbox Proporcional) */
+    .form-row {
+        display: flex;
+        gap: 1.25rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .flex-1 { flex: 1; }
+    .flex-2 { flex: 2; }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--user-text-muted);
+    }
+
+    .input-field,
+    .select-field {
+        width: 100%;
+        padding: 0.65rem 0.85rem;
+        background-color: var(--user-input-bg);
+        border: 1px solid var(--user-border);
+        border-radius: 6px;
+        color: var(--user-text-primary);
+        font-size: 0.95rem;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    .input-field:focus,
+    .select-field:focus {
+        border-color: var(--user-gold);
+    }
+
+    textarea.input-field {
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .form-divider {
+        margin: 1.5rem 0;
+        border: 0;
+        border-top: 1px solid var(--user-border);
+    }
+
+    .form-actions {
+        margin-top: 1.5rem;
+        text-align: right;
+    }
+
+    /* Alertas de Mensagem */
+    .alert {
+        padding: 0.85rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .alert-success {
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid #22c55e;
+        color: #22c55e;
+    }
+
+    .alert-danger {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid #ef4444;
+        color: #ef4444;
+    }
+
+    /* Responsividade */
+    @media (max-width: 640px) {
+        .form-row {
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .avatar-upload-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .avatar-upload-actions {
+            align-items: center;
+        }
+    }
+
+    /* Estilização do Avatar (Fixo e Redondo) */
+    .user-avatar-preview {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        min-height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        border: 2px solid var(--user-gold, #D4AF37);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+        display: block;
+    }
+
+}
