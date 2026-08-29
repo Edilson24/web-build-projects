@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja: MONTAGEM DE ESQUELETO!">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo de Autenticação: CONCLUÍDO!">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_pastor.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_tesouraria.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/pastoral/confirmacao_batismo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/tesouraria/movimentacoes.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CrenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CrenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleSecretaria.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/CrenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/CrenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,29 +86,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Smart Tomcat.Tomcat: Gestao-Igreja.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Tomcat: Gestao-Igreja.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\Gestao-Igreja\src\main\java\util" />
@@ -193,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787962441852</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Gestão de Igreja - Módulo de Autenticação: CONCLUÍDO!">
+      <option name="closed" value="true" />
+      <created>1787988778243</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1787988778243</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +240,7 @@
     <MESSAGE value="Gestão de Usuários - 93% feito." />
     <MESSAGE value="Gestão de Igreja: PLANEJAMENTO!" />
     <MESSAGE value="Gestão de Igreja: MONTAGEM DE ESQUELETO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja: MONTAGEM DE ESQUELETO!" />
+    <MESSAGE value="Gestão de Igreja - Módulo de Autenticação: CONCLUÍDO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo de Autenticação: CONCLUÍDO!" />
   </component>
 </project>

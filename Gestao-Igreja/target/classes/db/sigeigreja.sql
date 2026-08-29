@@ -138,5 +138,35 @@ CREATE TABLE `logs` (
   CONSTRAINT `fk_log_usuario` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 1. INSERT DE CRENTES (MEMBROS)
+INSERT INTO crentes (nome, data_nascimento, sexo, estado_civil, profissao, telefone, email, endereco, status_batismo, data_cadastro) VALUES
+('Mateus Cândido', '1995-04-12', 'M', 'SOLTEIRO', 'Engenheiro Informático', '+258 84 123 4567', 'mateus.candido@gmail.com', 'Bairro Central, Nacala-Porto', 'BATIZADO', '2026-01-10'),
+('Ana Paula Silva', '1998-08-23', 'F', 'CASADO', 'Professora', '+258 82 987 6543', 'ana.silva@hotmail.com', 'Bairro Triângulo, Nacala-Porto', 'NAO_BATIZADO', '2026-02-15'),
+('Lucas Gabriel', '2001-11-05', 'M', 'SOLTEIRO', 'Estudante', '+258 86 555 1212', 'lucas.gabriel@outlook.com', 'Bairro Mahelane, Nacala-Porto', 'NAO_BATIZADO', '2026-03-01'),
+('Esperança Mondlane', '1990-02-18', 'F', 'CASADO', 'Contabilista', '+258 84 333 9988', 'esperanca.m@gmail.com', 'Bairro Alto da Bela Vista, Nacala-Porto', 'BATIZADO', '2026-03-20'),
+('Gerson Chocho', '1997-06-30', 'M', 'SOLTEIRO', 'Técnico de Redes', '+258 87 777 4411', 'gerson.chocho@sigeigreja.com', 'Bairro Mathia, Nacala-Porto', 'BATIZADO', '2026-04-05'),
+('Anifa Armando', '2000-09-14', 'F', 'SOLTEIRO', 'Designer', '+258 84 888 2233', 'anifa.armando@gmail.com', 'Bairro Central, Nacala-Porto', 'NAO_BATIZADO', '2026-05-12'),
+('Manuel Zeferino', '1993-12-01', 'M', 'CASADO', 'Gestor de Recursos Humanos', '+258 82 111 6655', 'm.zeferino@gmail.com', 'Bairro Ontupaia, Nacala-Porto', 'BATIZADO', '2026-06-18'),
+('Renildo Cândido', '1999-03-27', 'M', 'SOLTEIRO', 'Desenvolvedor Software', '+258 86 444 3322', 'renildo.candido@gmail.com', 'Bairro Triângulo, Nacala-Porto', 'BATIZADO', '2026-07-02'),
+('Anércia Mondlane', '2002-07-19', 'F', 'SOLTEIRO', 'Estudante', '+258 84 999 1100', 'anercia.m@outlook.com', 'Bairro Mahelane, Nacala-Porto', 'NAO_BATIZADO', '2026-07-25'),
+('Robson Muadica', '1994-10-10', 'M', 'CASADO', 'Administrador de Redes', '+258 85 222 8899', 'robson.muadica@gmail.com', 'Bairro Central, Nacala-Porto', 'BATIZADO', '2026-08-10');
+
+
+-- 2. INSERT DE BATISMOS (CERIMÔNIAS E AGENDAMENTOS)
+-- Nota: Certifique-se de ter a tabela de batismos configurada ou ajuste conforme suas colunas
+INSERT INTO batismos (data_cerimonia, local_cerimonia, observacao, status) VALUES
+('2026-09-15', 'Praia de Fernão Veloso, Nacala', 'Cerimônia Trimestral de Batismos nas Águas', 'AGENDADO'),
+('2026-09-28', 'Tanque Batismal da Igreja Central', 'Batismo Especial de Primavera', 'AGENDADO'),
+('2026-06-10', 'Praia de Fernão Veloso, Nacala', 'Cerimônia de Inverno', 'REALIZADO');
+
+
+-- 3. INSERT DE VÍNCULO CRENTE <-> BATISMO (CANDIDATOS INSCRITOS)
+-- Insere os crentes não batizados como candidatos aos batismos futuros
+INSERT INTO batismo_candidatos (idbatismo, idcrente, status_candidato) VALUES
+(1, 2, 'INSCRITO'), -- Ana Paula Silva no batismo de 15/SET
+(1, 3, 'INSCRITO'), -- Lucas Gabriel no batismo de 15/SET
+(1, 6, 'INSCRITO'), -- Anifa Armando no batismo de 15/SET
+(2, 9, 'INSCRITO'); -- Anércia Mondlane no batismo de 28/SET
+
 COMMIT;
 

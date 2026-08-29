@@ -36,7 +36,7 @@ public class AutenticacaoFilter implements Filter {
 
                 // Validação de acesso exclusivo do ADMINISTRADOR aos logs[cite: 5, 6]
                 if (uri.contains("/admin/logs") && !"ADMINISTRADOR".equalsIgnoreCase(funcao)) {
-                    resp.sendRedirect(contextPath + "/views/dashboard/dashboard.jsp?erro=acesso_negado");
+                    resp.sendRedirect(contextPath + "/views/dashboard/dashboard_admin.jsp?erro=acesso_negado");
                     return;
                 }
             }
