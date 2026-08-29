@@ -1,0 +1,264 @@
+/* ==========================================================================
+   PALETA PERSONALIZADA SIGEIGREJA
+   - Azuis Predominantes: #0a2540 (Marinho), #1e40af (Royal), #2563eb (Ocean)
+   - Destaque Laranja Queimado (10%): #D66F1B / #c45e10
+   - Escala de Cinza (7%): #64748b (Muted), #f1f5f9 (Fundo), #e2e8f0 (Bordas)
+   ========================================================================== */
+:root {
+    --primary-blue: #0a2540;
+    --royal-blue: #1e40af;
+    --ocean-blue: #2563eb;
+    --accent-orange: #D66F1B; /* Tom de Destaque */
+    --accent-orange-hover: #c45e10;
+    --bg-page: #f1f5f9;
+    --gray-muted: #64748b;
+    --gray-border: #cbd5e1;
+    --text-dark: #0f172a;
+    --white: #ffffff;
+    --danger-color: #ef4444;
+    --danger-bg: #fef2f2;
+    --radius-xl: 24px;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+}
+
+/* Container de fundo em tela cheia */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 60%, #1d4ed8 100%);
+    padding: 2rem 1rem;
+}
+
+/* Card Principal em Layout Split (Inspirado no Modelo) */
+.login-split-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    display: flex;
+    width: 100%;
+    max-width: 920px;
+    min-height: 540px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Painel Esquerdo: Banner/Imagem da Igreja */
+.login-banner {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.5rem;
+    overflow: hidden;
+    background-color: var(--primary-blue);
+}
+
+.banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.65); /* Escurecimento suave para legibilidade do texto */
+    transition: transform 0.5s ease;
+}
+
+.login-banner:hover .banner-img {
+    transform: scale(1.03);
+}
+
+.banner-overlay {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+}
+
+.banner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(214, 111, 27, 0.9); /* Destaque Laranja Queimado #D66F1B */
+    color: var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner-overlay h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-overlay p {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Painel Direito: Formulário */
+.login-form-panel {
+    flex: 1.1;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.login-header h2 {
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.login-header p {
+    color: var(--gray-muted);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Form inputs com foco em azul e ícone em cinza/laranja */
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #334155;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--gray-muted);
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    padding: 0.8rem 0.8rem 0.8rem 2.75rem;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.input-icon-wrapper input:focus {
+    background-color: var(--white);
+    border-color: var(--ocean-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.input-icon-wrapper input:focus + .input-icon,
+.input-icon-wrapper input:focus ~ .input-icon {
+    color: var(--accent-orange); /* Ícone ganha destaque no foco */
+}
+
+/* Botão Principal com a cor #D66F1B */
+.btn-primary {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-orange-hover) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0.5rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(214, 111, 27, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(214, 111, 27, 0.45);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Alertas de Erro */
+.alert-error {
+    background-color: var(--danger-bg);
+    color: var(--danger-color);
+    border: 1px solid #fecaca;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.4rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--gray-muted);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .login-split-card {
+        flex-direction: column;
+        max-width: 440px;
+    }
+
+    .login-banner {
+        min-height: 200px;
+        padding: 1.5rem;
+    }
+
+    .login-form-panel {
+        padding: 2rem 1.5rem;
+    }
+}

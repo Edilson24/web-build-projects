@@ -4,36 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja: PLANEJAMENTO!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/admin/LogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/pastoral/ConfirmarBatismoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/BatismoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/PastorServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/tesouraria/FinanceiroServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/BatismoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CrenteDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/GrupoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/LogDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/MovimentacaoFinanceiraDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ParentescoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/UsuarioDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Crente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/LogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/AvatarUtil.java" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja: MONTAGEM DE ESQUELETO!">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/login/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/login/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/login/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/login/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Conexao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/includes/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/sidebar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -110,6 +85,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -209,11 +185,30 @@
       <option name="project" value="LOCAL" />
       <updated>1787958537229</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Gestão de Igreja: MONTAGEM DE ESQUELETO!">
+      <option name="closed" value="true" />
+      <created>1787962441852</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1787962441852</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Transição: de Gestão de Usuário para Igreja." />
@@ -221,6 +216,7 @@
     <MESSAGE value="Feito!" />
     <MESSAGE value="Gestão de Usuários - 93% feito." />
     <MESSAGE value="Gestão de Igreja: PLANEJAMENTO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja: PLANEJAMENTO!" />
+    <MESSAGE value="Gestão de Igreja: MONTAGEM DE ESQUELETO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja: MONTAGEM DE ESQUELETO!" />
   </component>
 </project>
