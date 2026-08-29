@@ -1,0 +1,65 @@
+Listagem de caminhos de pasta
+O número de série do volume é 7033-F658
+D:.
+|   estrutura_hope.txt
+|   pom.xml
+|   
++---.idea
+|       compiler.xml
+|       dbnavigator.xml
+|       jarRepositories.xml
+|       misc.xml
+|       vcs.xml
+|       workspace.xml
+|       
++---.mvn
++---.smarttomcat
+|   \---Gestao-Igreja
+|       \---conf
+|               catalina.policy
+|               catalina.properties
+|               context.xml
+|               jaspic-providers.xml
+|               jaspic-providers.xsd
+|               logging.properties
+|               server.xml
+|               tomcat-users.xml
+|               tomcat-users.xsd
+|               web.xml
+|               
+\---src
+    \---main
+        +---java
+        |   +---controller
+        |   |   +---dashboard
+        |   |   \---login
+        |   |           LoginServlet.java
+        |   |           LogoutServlet.java
+        |   |           
+        |   +---dao
+        |   +---documentacao
+        |   |       base_de_dados_base.txt
+        |   |       descrição_de_desenvolvimento_hope.txt
+        |   |       
+        |   +---model
+        |   \---util
+        |           Conexao.java
+        |           sigeigreja.sql
+        |           
+        +---resources
+        \---webapp
+            |   index.jsp
+            |   
+            \---WEB-INF
+                |   web.xml
+                |   
+                +---includes
+                |       sidebar.jsp
+                |       
+                \---views
+                    +---dashboard
+                    |       dashboard.jsp
+                    |       
+                    \---login
+                            login.jsp
+                            
