@@ -1,0 +1,96 @@
+Sugerido pela IA
+Gestao-Igreja/
+├── .idea/
+├── pom.xml
+└── src/
+    └── main/
+        ├── java/
+        │   ├── controller/               # Servlets da aplicação (Camada de Controle)
+        │   │   ├── admin/
+        │   │   │   └── LogServlet.java            # Visualização de audit logs (Admin)
+        │   │   ├── dashboard/
+        │   │   │   └── DashboardServlet.java      # Redirecionamento por perfil (Admin, Pastor, etc.)
+        │   │   ├── login/
+        │   │   │   ├── LoginServlet.java          # Processa a autenticação
+        │   │   │   └── LogoutServlet.java         # Encerra a sessão
+        │   │   ├── pastoral/
+        │   │   │   └── ConfirmarBatismoServlet.java # Tela de confirmação do Pastor
+        │   │   ├── secretaria/
+        │   │   │   ├── BatismoServlet.java        # Agendamento e vinculação de batismos
+        │   │   │   ├── CrenteServlet.java         # CRUD de membros/crentes e parentesco
+        │   │   │   └── PastorServlet.java         # Cadastro de pastores e contas
+        │   │   └── tesouraria/
+        │   │       └── FinanceiroServlet.java     # Lançamento de dízimos, ofertas e despesas
+        │   │
+        │   ├── dao/                      # Data Access Objects (Operações SQL)
+        │   │   ├── BatismoDAO.java
+        │   │   ├── CrenteDAO.java
+        │   │   ├── GrupoDAO.java
+        │   │   ├── LogDAO.java
+        │   │   ├── MovimentacaoFinanceiraDAO.java
+        │   │   ├── ParentescoDAO.java
+        │   │   └── UsuarioDAO.java
+        │   │
+        │   ├── filter/                   # Filtros de Segurança e Sessão
+        │   │   └── AutenticacaoFilter.java        # Valida login e permissões de acesso (Funções)
+        │   │
+        │   ├── model/                    # Entidades / JavaBeans (Mapeamento das tabelas)
+        │   │   ├── Batismo.java
+        │   │   ├── Crente.java
+        │   │   ├── DetalheBatismo.java
+        │   │   ├── Grupo.java
+        │   │   ├── Log.java
+        │   │   ├── MovimentacaoFinanceira.java
+        │   │   ├── Parentesco.java
+        │   │   └── Usuario.java
+        │   │
+        │   ├── service/                  # Regras de Negócio e Serviços Utilitários
+        │   │   ├── BatismoService.java            # Valida limite de 10 candidatos por batismo
+        │   │   ├── LogService.java                # Utilitário para gravação centralizada de logs
+        │   │   ├── PastorService.java             # Valida limite máximo de 3 pastores
+        │   │   └── UsuarioService.java            # Hash de senha e validações de credenciais
+        │   │
+        │   └── util/                     # Utilitários Gerais de Infraestrutura
+        │       ├── Conexao.java                   # Fallback Inteligente (MySQL Workbench / XAMPP)
+        │       └── AvatarUtil.java                # Gerador de fallback ui-avatars.com
+        │
+        ├── resources/                    # Arquivos de configuração e scripts SQL
+        │   ├── db/
+        │   │   └── sigeigreja.sql                 # Script SQL unificado para criação do banco
+        │   └── dbnavigator.xml
+        │
+        └── webapp/                       # Interfaces web (JSP, Assets e Estrutura do Tomcat)
+            ├── assets/                   # Arquivos estáticos
+            │   ├── css/
+            │   │   └── style.css                  # Paleta (Azul, Branco e Vermelho)
+            │   ├── js/
+            │   │   ├── chart-config.js            # Gráficos Chart.js (Dashboard Tesouraria/Pastoral)
+            │   │   └── main.js                    # Manipulação de modais e AJAX
+            │   └── images/
+            │
+            ├── includes/                 # Componentes reutilizáveis do Layout
+            │   ├── header.jsp                     # Topbar com dados e foto do usuário logado
+            │   ├── navbar.jsp
+            │   └── sidebar.jsp                    # Menu lateral dinâmico baseado no perfil do usuário
+            │
+            ├── views/                    # Visualizações segmentadas por Módulo
+            │   ├── admin/
+            │   │   └── logs.jsp                   # Tabela e filtros de auditoria
+            │   ├── dashboard/
+            │   │   ├── dashboard_admin.jsp
+            │   │   ├── dashboard_pastor.jsp       # Resumos e gráficos pastorais
+            │   │   ├── dashboard_secretaria.jsp
+            │   │   └── dashboard_tesouraria.jsp   # Cards e fluxo de caixa (entradas/saídas)
+            │   ├── login/
+            │   │   └── login.jsp                  # Form de login
+            │   ├── pastoral/
+            │   │   └── confirmacao_batismo.jsp    # Lista e chamada individual dos candidatos
+            │   ├── secretaria/
+            │   │   ├── batismos.jsp               # Agendamento de cerimônias e limite de candidatos
+            │   │   └── membros.jsp                # Tabela de crentes, modais de visualização/edição
+            │   └── tesouraria/
+            │       └── movimentacoes.jsp          # Registro de entradas, ofertórios e despesas
+            │
+            ├── index.jsp                          # Redireciona para /login ou /dashboard
+            └── WEB-INF/
+                └── web.xml                        # Descritor de Implantação do Tomcat 10

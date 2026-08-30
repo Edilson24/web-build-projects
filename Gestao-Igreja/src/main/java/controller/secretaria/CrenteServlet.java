@@ -51,6 +51,9 @@ public class CrenteServlet extends HttpServlet {
                 String idGrupoStr = request.getParameter("idgrupo");
                 if (idGrupoStr != null && !idGrupoStr.isEmpty()) {
                     novo.setIdgrupo(Integer.parseInt(idGrupoStr));
+                }else {
+                    // ID do grupo padrão no seu banco (exemplo: 1 - Grupo Geral)
+                    novo.setIdgrupo(1);
                 }
 
                 crenteDAO.cadastrar(novo);
@@ -63,6 +66,23 @@ public class CrenteServlet extends HttpServlet {
 
                 crenteDAO.adicionarParentesco(idCrente1, idCrente2, tipo);
                 response.sendRedirect(request.getContextPath() + "/secretaria/membros?sucesso=parentesco");
+            } else if ("atualizar".equals(acao)) {
+                Crente c = new Crente();
+                c.setIdcrente(Integer.parseInt(request.getParameter("idcrente")));
+                c.setNome(request.getParameter("nome"));
+                c.setDataNascimento(Date.valueOf(request.getParameter("dataNascimento")));
+                c.setTelefone(request.getParameter("telefone"));
+                c.setEndereco(request.getParameter("endereco"));
+                c.setEstadoCivil(request.getParameter("estadoCivil"));
+                c.setStatusBatismo(request.getParameter("statusBatismo"));
+
+                String idGrupoStr = request.getParameter("idgrupo");
+                if (idGrupoStr != null && !idGrupoStr.isEmpty()) {
+                    c.setIdgrupo(Integer.parseInt(idGrupoStr));
+                }
+
+                crenteDAO.atualizar(c);
+                response.sendRedirect(request.getContextPath() + "/secretaria/membros?sucesso=atualizado");
             }
         } catch (Exception e) {
             e.printStackTrace();

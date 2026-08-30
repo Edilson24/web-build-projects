@@ -1,6 +1,7 @@
 package dao;
 
 import model.Crente;
+import model.ParenteDTO;
 import util.Conexao;
 
 import java.sql.*;
@@ -77,7 +78,7 @@ public class CrenteDAO {
     }
 
     public boolean adicionarParentesco(int idCrente1, int idCrente2, String tipoParentesco) throws SQLException {
-        String sql = "INSERT INTO membro_parentescos (idcrente_1, idcrente_2, tipo_parentesco) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO parentescos (idcrente_1, idcrente_2, tipo_vinculo) VALUES (?, ?, ?)";
         try (Connection conn = Conexao.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, idCrente1);
@@ -131,4 +132,63 @@ public class CrenteDAO {
         }
         return lista;
     }
+
+    public List<ParenteDTO> buscarParentesPorCrenteId(int idCrente) throws SQLException {
+        List<ParenteDTO> parentes = new ArrayList<>();
+
+        String sql = "SELECT c.nome, p.tipo_vinculo AS grau " +
+                "FROM parentescos p " +
+                "JOIN crentes c ON p.idcrente_2 = c.idcrente " +
+                "WHERE p.idcrente_1 = ? " +
+                "UNION " +
+                "SELECT c.nome, p.tipo_vinculo AS grau " +
+                "FROM parentescos p " +
+                "JOIN crentes c ON p.idcrente_1 = c.idcrente " +
+                "WHERE p.idcrente_2 = ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idCrente);
+            stmt.setInt(2, idCrente);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    parentes.add(new ParenteDTO(
+                            rs.getString("nome"),
+                            rs.getString("grau")
+                    ));
+                }
+            }
+        }
+        return parentes;
+    }
+
+    public boolean atualizar(Crente crente) throws SQLException {
+        String sql = "UPDATE crentes SET nome = ?, data_nascimento = ?, telefone = ?, endereco = ?, " +
+                "estado_civil = ?, status_batismo = ?, idgrupo = ? WHERE idcrente = ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, crente.getNome());
+            stmt.setDate(2, crente.getDataNascimento());
+            stmt.setString(3, crente.getTelefone());
+            stmt.setString(4, crente.getEndereco());
+            stmt.setString(5, crente.getEstadoCivil());
+            stmt.setString(6, crente.getStatusBatismo());
+
+            if (crente.getIdgrupo() != null && crente.getIdgrupo() > 0) {
+                stmt.setInt(7, crente.getIdgrupo());
+            } else {
+                stmt.setNull(7, java.sql.Types.INTEGER);
+            }
+
+            stmt.setInt(8, crente.getIdcrente());
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+
 }
