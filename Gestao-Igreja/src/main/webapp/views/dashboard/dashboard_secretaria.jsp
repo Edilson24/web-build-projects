@@ -1,18 +1,44 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Usuario, model.Crente, dao.CrenteDAO, java.util.List" %>
+
+
+
+<%@ page import="model.Batismo" %>
+
+<%@ page import="dao.BatismoDAO" %>
+
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.util.Locale" %>
 <%
-    Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
     if (usuario == null) {
         response.sendRedirect(request.getContextPath() + "/login");
         return;
     }
 
-    // Instância DAO e busca de métricas em tempo real
-    CrenteDAO crenteDAO = new CrenteDAO();
-    int totalMembros = crenteDAO.contarTotalMembros();
-    int totalBatizados = crenteDAO.contarPorStatusBatismo("BATIZADO");
-    int totalNaoBatizados = crenteDAO.contarPorStatusBatismo("NAO_BATIZADO");
-    List<Crente> ultimosMembros = crenteDAO.listarUltimosCadastrados(5);
+    // Declaração das variáveis de dados
+    int totalMembros = 0;
+    int totalBatizados = 0;
+    int totalNaoBatizados = 0;
+    List<Crente> ultimosMembros = new ArrayList<>();
+    List<Batismo> proximosBatismos = new ArrayList<>();
+
+    try {
+        // Instâncias DAO e busca de métricas em tempo real (Membros)
+        CrenteDAO crenteDAO = new CrenteDAO();
+        totalMembros = crenteDAO.contarTotalMembros();
+        totalBatizados = crenteDAO.contarPorStatusBatismo("BATIZADO");
+        totalNaoBatizados = crenteDAO.contarPorStatusBatismo("NAO_BATIZADO");
+        ultimosMembros = crenteDAO.listarUltimosCadastrados(5);
+
+        // Instância DAO e busca de Batismos em tempo real
+        BatismoDAO batismoDAO = new BatismoDAO();
+        proximosBatismos = batismoDAO.listarTodos();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 %>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -151,21 +177,41 @@
                     </table>
                 </div>
 
+                <!-- WIDGET 2: PRÓXIMOS BATISMOS (COM DADOS REAIS DO BANCO) -->
                 <div class="widget-card flex-1">
                     <div class="widget-header">
                         <h3><i class="fa-solid fa-calendar-days"></i> Próximos Batismos</h3>
                     </div>
                     <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-date">
-                                <span class="day">15</span>
-                                <span class="month">SET</span>
+                        <%
+                            if (proximosBatismos != null && !proximosBatismos.isEmpty()) {
+                                // Formata o mês em 3 letras maiúsculas (ex: SET, OUT, NOV)
+                                DateTimeFormatter fmtMes = DateTimeFormatter.ofPattern("MMM", new Locale("pt", "BR"));
+
+                                for (Batismo b : proximosBatismos) {
+                                    LocalDate dataBatismo = b.getData().toLocalDate();
+                                    String dia = String.format("%02d", dataBatismo.getDayOfMonth());
+                                    String mes = dataBatismo.format(fmtMes).toUpperCase().replace(".", "");
+                        %>
+                            <div class="activity-item">
+                                <div class="activity-date">
+                                    <span class="day"><%= dia %></span>
+                                    <span class="month"><%= mes %></span>
+                                </div>
+                                <div class="activity-details">
+                                    <h4><%= b.getLocal() %></h4>
+                                    <p><%= b.getTotalCandidatos() %> <%= b.getTotalCandidatos() == 1 ? "candidato inscrito" : "candidatos inscritos" %></p>
+                                </div>
                             </div>
-                            <div class="activity-details">
-                                <h4>Cerimônia Nacala-Porto</h4>
-                                <p>3 candidatos inscritos</p>
+                        <%      }
+                            } else {
+                        %>
+                            <div class="activity-item">
+                                <div class="activity-details">
+                                    <p style="color: #666; font-style: italic;">Nenhuma cerimônia de batismo agendada.</p>
+                                </div>
                             </div>
-                        </div>
+                        <% } %>
                     </div>
                 </div>
 
