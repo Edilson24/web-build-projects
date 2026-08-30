@@ -36,31 +36,37 @@ public class CrenteDAO {
         return lista;
     }
 
-    public boolean cadastrar(Crente crente) throws SQLException {
+    public int cadastrar(Crente crente) throws SQLException {
         String sql = "INSERT INTO crentes (nome, data_nascimento, telefone, endereco, estado_civil, status_batismo, data_entrada, idgrupo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Conexao.getConexao();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, crente.getNome());
             stmt.setDate(2, crente.getDataNascimento());
             stmt.setString(3, crente.getTelefone());
             stmt.setString(4, crente.getEndereco());
             stmt.setString(5, crente.getEstadoCivil());
-
-            // Regra de Negócio: Novos cadastros iniciam como NAO_BATIZADO por padrão via Servlet
             stmt.setString(6, crente.getStatusBatismo());
             stmt.setDate(7, crente.getDataEntrada());
 
             if (crente.getIdgrupo() != null) {
                 stmt.setInt(8, crente.getIdgrupo());
             } else {
-                stmt.setNull(8, Types.INTEGER);
+                stmt.setNull(8, java.sql.Types.INTEGER);
             }
 
-            return stmt.executeUpdate() > 0;
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows > 0) {
+                try (ResultSet rs = stmt.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        return rs.getInt(1); // Returns generated idcrente
+                    }
+                }
+            }
         }
+        return -1;
     }
 
     public boolean verificarBatismoConcluido(int idcrente) throws SQLException {

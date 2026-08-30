@@ -54,4 +54,39 @@ public class UsuarioDAO {
         }
         return 0;
     }
+
+    // Count users by role (e.g., 'PASTOR')
+    public int contarUsuariosPorFuncao(String funcao) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE funcao = ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, funcao);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+        return 0;
+    }
+
+    // Insert new user account
+    public boolean cadastrar(Usuario usuario) throws SQLException {
+        String sql = "INSERT INTO usuarios (idcrente, nome, email, senha, funcao, foto_url) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            if (usuario.getIdcrente() != null) {
+                stmt.setInt(1, usuario.getIdcrente());
+            } else {
+                stmt.setNull(1, java.sql.Types.INTEGER);
+            }
+            stmt.setString(2, usuario.getNome());
+            stmt.setString(3, usuario.getEmail());
+            stmt.setString(4, usuario.getSenha());
+            stmt.setString(5, usuario.getFuncao());
+            stmt.setString(6, usuario.getFotoUrl());
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
 }

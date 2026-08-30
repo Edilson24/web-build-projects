@@ -134,31 +134,42 @@
         </main>
     </div>
 
-    <!-- MODAL 1: CADASTRO DE MEMBRO -->
+    <!-- MODAL 1: CADASTRO DE MEMBRO / PASTOR -->
     <div id="modalCadastro" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
-                <h3><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Membro</h3>
+                <h3 id="modalCadastroTitulo"><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Membro</h3>
                 <button class="btn-close" onclick="closeModal('modalCadastro')">&times;</button>
             </div>
-            <!-- Action ajustado para a rota padrão do Servlet de membros -->
-            <form action="<%= request.getContextPath() %>/secretaria/membros" method="POST">
-                <!-- Nome do parâmetro alterado de "action" para "acao" e valor para "cadastrar" -->
-                <input type="hidden" name="acao" value="cadastrar">
+
+            <form action="<%= request.getContextPath() %>/secretaria/membros" method="POST" id="formCadastroMembro">
+                <input type="hidden" name="acao" id="inputAcao" value="cadastrar">
+                <input type="hidden" name="tipoCadastro" id="tipoCadastro" value="MEMBRO">
 
                 <div class="modal-body grid-form">
+
+                    <!-- Toggle Button to Switch between Membro and Pastor -->
+                    <div class="form-group full-width" style="display: flex; gap: 10px; align-items: center; background: #f8f9fa; padding: 10px; border-radius: 6px;">
+                        <label style="margin: 0; font-weight: bold;">Tipo de Cadastro:</label>
+                        <button type="button" id="btnTipoMembro" class="btn-primary" style="padding: 5px 15px;" onclick="selecionarTipoCadastro('MEMBRO')">Membro Comum</button>
+                        <button type="button" id="btnTipoPastor" class="btn-secondary" style="padding: 5px 15px;" onclick="selecionarTipoCadastro('PASTOR')"><i class="fa-solid fa-user-tie"></i> Pastor</button>
+                    </div>
+
                     <div class="form-group full-width">
                         <label>Nome Completo *</label>
                         <input type="text" name="nome" class="form-control" required placeholder="Ex: João da Silva">
                     </div>
+
                     <div class="form-group">
                         <label>Data de Nascimento *</label>
                         <input type="date" name="dataNascimento" class="form-control" required>
                     </div>
+
                     <div class="form-group">
                         <label>Telefone</label>
                         <input type="text" name="telefone" class="form-control" placeholder="+258 8X XXX XXXX">
                     </div>
+
                     <div class="form-group">
                         <label>Estado Civil *</label>
                         <select name="estadoCivil" class="form-control" required>
@@ -169,13 +180,43 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label>Data de Entrada *</label>
+                        <input type="date" name="dataEntrada" class="form-control" required>
+                    </div>
 
+                    <div class="form-group">
+                        <label>Grupo *</label>
+                        <select name="idGrupo" class="form-control" required>
+                            <option value="1">Jovens</option>
+                            <option value="2">Mulheres</option>
+                            <option value="3">Homens</option>
+                            <option value="4">Geral</option>
+                        </select>
+                    </div>
 
                     <div class="form-group full-width">
                         <label>Endereço / Bairro</label>
                         <input type="text" name="endereco" class="form-control" placeholder="Ex: Bairro Central, Nacala-Porto">
                     </div>
+
+                    <!-- Campos Exclusivos para Pastor (Ocultos por Padrão) -->
+                    <div id="secaoContaPastor" class="full-width" style="display: none; border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px;">
+                        <h4 style="margin-bottom: 10px; color: #1a365d;"><i class="fa-solid fa-key"></i> Conta de Acesso ao Sistema (Pastor)</h4>
+                        <div class="grid-form">
+                            <div class="form-group">
+                                <label>E-mail (Login) *</label>
+                                <input type="email" name="email" id="inputEmailPastor" class="form-control" placeholder="pastor@sigeigreja.org">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha Inicial *</label>
+                                <input type="password" name="senha" id="inputSenhaPastor" class="form-control" placeholder="******">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('modalCadastro')">Cancelar</button>
                     <button type="submit" class="btn-primary">Salvar Cadastramento</button>
@@ -183,6 +224,36 @@
             </form>
         </div>
     </div>
+
+    <script>
+    function selecionarTipoCadastro(tipo) {
+        const btnMembro = document.getElementById('btnTipoMembro');
+        const btnPastor = document.getElementById('btnTipoPastor');
+        const secaoPastor = document.getElementById('secaoContaPastor');
+        const tipoCadastro = document.getElementById('tipoCadastro');
+        const inputEmail = document.getElementById('inputEmailPastor');
+        const inputSenha = document.getElementById('inputSenhaPastor');
+        const titulo = document.getElementById('modalCadastroTitulo');
+
+        tipoCadastro.value = tipo;
+
+        if (tipo === 'PASTOR') {
+            btnMembro.className = 'btn-secondary';
+            btnPastor.className = 'btn-primary';
+            secaoPastor.style.display = 'block';
+            inputEmail.required = true;
+            inputSenha.required = true;
+            titulo.innerHTML = '<i class="fa-solid fa-user-tie"></i> Cadastrar Novo Pastor';
+        } else {
+            btnMembro.className = 'btn-primary';
+            btnPastor.className = 'btn-secondary';
+            secaoPastor.style.display = 'none';
+            inputEmail.required = false;
+            inputSenha.required = false;
+            titulo.innerHTML = '<i class="fa-solid fa-user-plus"></i> Cadastrar Novo Membro';
+        }
+    }
+    </script>
 
     <!-- MODAL 2: PARENTESCO N:N -->
     <div id="modalParentesco" class="modal-overlay">
@@ -312,6 +383,74 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('modalEdicao')">Cancelar</button>
                     <button type="submit" class="btn-primary">Atualizar Dados</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 5: CADASTRO DE PASTOR -->
+    <div id="modalCadastroPastor" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-user-tie"></i> Cadastrar Novo Pastor</h3>
+                <span class="close-modal" onclick="fecharModal('modalCadastroPastor')">&times;</span>
+            </div>
+            <form action="<%= request.getContextPath() %>/secretaria/pastores/cadastrar" method="POST">
+                <div class="modal-body">
+                    <h4>Dados Pessoais</h4>
+                    <div class="form-group">
+                        <label>Nome Completo *</label>
+                        <input type="text" name="nome" required class="form-control">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Data de Nascimento *</label>
+                            <input type="date" name="dataNascimento" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="text" name="telefone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Estado Civil *</label>
+                            <select name="estadoCivil" required class="form-control">
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                                <option value="Viúvo(a)">Viúvo(a)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Entrada *</label>
+                            <input type="date" name="dataEntrada" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Grupo Padrão *</label>
+                        <select name="idGrupo" required class="form-control">
+                            <!-- Iterar grupos disponíveis ou colocar o id do grupo Geral/Homens -->
+                            <option value="4">Geral</option>
+                            <option value="3">Homens</option>
+                        </select>
+                    </div>
+
+                    <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #eee;">
+                    <h4>Conta de Acesso ao Sistema</h4>
+
+                    <div class="form-group">
+                        <label>E-mail (Login) *</label>
+                        <input type="email" name="email" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha Inicial *</label>
+                        <input type="password" name="senha" required class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal('modalCadastroPastor')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Salvar Pastor</button>
                 </div>
             </form>
         </div>

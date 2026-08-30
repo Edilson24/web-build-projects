@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo de Gestão de Membros: 70% CONCLUÍDO!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CandidatosBatismoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Batismo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/DetalheBatismo.java" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!">
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/PastorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/BatismoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/BatismoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BatismoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/BatismoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/PastorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/PastorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CrenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CrenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/CrenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/CrenteDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788106656562</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!">
+      <option name="closed" value="true" />
+      <created>1788119075243</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788119075243</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +270,7 @@
     <MESSAGE value="Gestão de Igreja - Módulo de Autenticação: CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 68% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 70% CONCLUÍDO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo de Gestão de Membros: 70% CONCLUÍDO!" />
+    <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!" />
   </component>
 </project>
