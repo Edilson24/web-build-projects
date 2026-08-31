@@ -1,0 +1,292 @@
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS: HEADER DA TESOURARIA (.top-header)
+   ========================================================================== */
+
+.top-header {
+    background-color: #1a365d !important;
+    color: #ffffff !important;
+    padding: 12px 24px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 64px;
+    box-sizing: border-box;
+}
+
+.top-header .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-header .header-brand i {
+    font-size: 22px;
+    color: #63b3ed;
+}
+
+.top-header .header-brand span {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+}
+
+.top-header .header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.top-header .user-role-badge {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ebf8ff !important;
+    padding: 4px 10px !important;
+    border-radius: 20px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.top-header img {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #63b3ed !important;
+}
+
+.top-header .header-user-info a[href*="logout"] {
+    color: #e2e8f0 !important;
+    font-size: 16px !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.top-header .header-user-info a[href*="logout"]:hover {
+    background-color: #c53030 !important;
+    color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS: SIDEBAR DA TESOURARIA (.sidebar-menu)
+   ========================================================================== */
+
+.sidebar-menu {
+    width: 260px;
+    min-width: 260px;
+    background-color: #2d3748;
+    color: #edf2f7;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* Perfil do Usuário na Sidebar */
+.sidebar-menu .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid #4a5568;
+    margin-bottom: 15px;
+}
+
+.sidebar-menu .avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4299e1;
+}
+
+.sidebar-menu .user-profile .user-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-menu .user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu .user-role {
+    font-size: 11px;
+    color: #a0aec0;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* NAVEGAÇÃO / LINKS DO MENU */
+.sidebar-menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 10px;
+}
+
+.sidebar-menu .nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-menu .nav-links a:hover {
+    background-color: #3a4a61;
+    color: #ffffff;
+}
+
+.sidebar-menu .nav-links a.active {
+    background-color: #3182ce;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Destaque para opção do Administrador */
+.sidebar-menu .nav-links a.menu-admin {
+    border-left: 3px solid #ed8936;
+    color: #feebc8;
+}
+
+.sidebar-menu .nav-links a.menu-admin:hover {
+    background-color: #7b341e;
+    color: #ffffff;
+}
+
+/* Botão Sair dentro da Sidebar */
+.sidebar-menu .nav-links a.btn-logout {
+    margin-top: 20px;
+    border-top: 1px solid #4a5568;
+    border-radius: 0;
+    color: #fc8181;
+}
+
+.sidebar-menu .nav-links a.btn-logout:hover {
+    background-color: #9b2c2c;
+    color: #ffffff;
+}
+
+/* ==========================================
+   ESTILOS DE MODAL (POSICIONAMENTO E OVERLAY)
+   ========================================== */
+
+/* Camada de fundo escuro e centralização */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55); /* Fundo semi-transparente escuro */
+    backdrop-filter: blur(4px);            /* Efeito de desfoque (blur) no fundo */
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;                         /* Garante que fique acima de tudo */
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Quando o modal for ativado/aberto */
+.modal-overlay.active,
+.modal-overlay.show {
+    display: flex !important;
+}
+
+/* Caixa branca interna do modal */
+.modal-box {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;                      /* Largura máxima elegante */
+    max-height: 90vh;                      /* Evita estourar a altura da tela */
+    overflow-y: auto;                      /* Scroll interno se o formulário for grande */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    animation: modalFadeIn 0.25s ease-out;
+}
+
+/* Cabeçalho do Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Botão de Fechar (X) */
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a0aec0;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.btn-close:hover {
+    color: #e53e3e;
+}
+
+/* Corpo do Modal */
+.modal-body {
+    padding: 20px;
+}
+
+/* Rodapé do Modal */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Animação suave de entrada */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
