@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/MovimentacaoFinanceira.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleTesouraria.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/includes/header.jsp" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/tesouraria/FinanceiroServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/tesouraria/FinanceiroServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MovimentacaoFinanceiraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MovimentacaoFinanceiraDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_tesouraria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_tesouraria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/styleTesouraria.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleTesouraria.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/tesouraria/movimentacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/tesouraria/movimentacoes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/tesouraria/FinanceiroServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/tesouraria/FinanceiroServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/MovimentacaoFinanceiraDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/MovimentacaoFinanceiraDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788125337821</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!">
+      <option name="closed" value="true" />
+      <created>1788194232942</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788194232942</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +282,7 @@
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 68% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 70% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!" />
+    <MESSAGE value="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!" />
   </component>
 </project>

@@ -290,3 +290,18 @@
         transform: translateY(0) scale(1);
     }
 }
+
+/* Estilização Geral dos Campos: Input, Select e Textarea */
+.form-control {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #2d3748;
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}

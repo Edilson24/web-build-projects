@@ -11,6 +11,7 @@
     <!-- CSS Geral e da Tesouraria -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styleTesouraria.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styleSecretaria.css">
 
     <!-- FontAwesome Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -144,7 +145,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn-secondary" onclick="closeModal('modalEntrada')">Cancelar</button>
+                    <button type="button" class="btn-secondary"  onclick="closeModal('modalEntrada')">Cancelar</button>
                     <button type="submit" class="btn-primary" style="background: #2f855a; border-color: #2f855a;">Salvar Entrada</button>
                 </div>
             </form>
