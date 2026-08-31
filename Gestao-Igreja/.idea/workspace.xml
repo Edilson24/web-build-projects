@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!">
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Financeiro: 95% CONCLUÍDO!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/styleTesouraria.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleTesouraria.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/tesouraria/movimentacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/tesouraria/movimentacoes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788194232942</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Gestão de Igreja - Módulo Financeiro: 95% CONCLUÍDO!">
+      <option name="closed" value="true" />
+      <created>1788201417625</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788201417625</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +289,7 @@
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 70% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo de Gestão de Membros: 80% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Financeiro: 80% CONCLUÍDO!" />
+    <MESSAGE value="Gestão de Igreja - Módulo Financeiro: 95% CONCLUÍDO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Financeiro: 95% CONCLUÍDO!" />
   </component>
 </project>
