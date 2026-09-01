@@ -196,5 +196,42 @@ public class CrenteDAO {
         }
     }
 
+    // Contar membros batizados
+    public int contarBatizados() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM crentes WHERE status_batismo = 'BATIZADO'";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) return rs.getInt(1);
+        }
+        return 0;
+    }
+
+    // Contar membros aguardando batismo
+    public int contarAguardandoBatismo() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM crentes WHERE status_batismo = 'AGUARDANDO_BATISMO'";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) return rs.getInt(1);
+        }
+        return 0;
+    }
+
+    // Contar cadastros do mês atual corrigido
+    public int contarEntradasMesAtual() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM crentes WHERE MONTH(data_entrada) = MONTH(CURRENT_DATE()) AND YEAR(data_entrada) = YEAR(CURRENT_DATE())";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
+
 
 }

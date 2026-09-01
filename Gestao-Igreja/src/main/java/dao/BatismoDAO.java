@@ -1,6 +1,7 @@
 package dao;
 
 import model.Batismo;
+import model.Crente;
 import model.DetalheBatismo;
 import model.Usuario;
 import util.Conexao;
@@ -144,5 +145,76 @@ public class BatismoDAO {
             }
         }
         return lista;
+    }
+
+    public List<Crente> pastorlistarCandidatosPorBatismo(int idBatismo) throws SQLException {
+        List<Crente> candidatos = new ArrayList<>();
+        String sql = "SELECT c.* FROM crentes c " +
+                "JOIN detalhe_batismo db ON c.idcrente = db.idcrente " +
+                "WHERE db.idbatismo = ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idBatismo);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Crente crente = new Crente();
+                    crente.setIdcrente(rs.getInt("idcrente"));
+                    crente.setNome(rs.getString("nome"));
+                    crente.setDataNascimento(rs.getDate("data_nascimento"));
+                    crente.setStatusBatismo(rs.getString("status_batismo"));
+                    candidatos.add(crente);
+                }
+            }
+        }
+        return candidatos;
+    }
+
+    public boolean confirmarBatismoMembros(int idBatismo, String[] idsCrentesConfirmados) throws SQLException {
+        if (idsCrentesConfirmados == null || idsCrentesConfirmados.length == 0) {
+            return false;
+        }
+
+        String sqlDetalhe = "UPDATE detalhe_batismo SET confirmado = 1 WHERE idbatismo = ? AND idcrente = ?";
+        String sqlCrente = "UPDATE crentes SET status_batismo = 'BATIZADO' WHERE idcrente = ?";
+
+        Connection conn = null;
+        try {
+            conn = Conexao.getConexao();
+            conn.setAutoCommit(false); // Inicia a Transação
+
+            try (PreparedStatement stmtDetalhe = conn.prepareStatement(sqlDetalhe);
+                 PreparedStatement stmtCrente = conn.prepareStatement(sqlCrente)) {
+
+                for (String idStr : idsCrentesConfirmados) {
+                    int idCrente = Integer.parseInt(idStr);
+
+                    // 1. Marca como confirmado na tabela detalhe_batismo
+                    stmtDetalhe.setInt(1, idBatismo);
+                    stmtDetalhe.setInt(2, idCrente);
+                    stmtDetalhe.addBatch();
+
+                    // 2. Atualiza o status do crente para BATIZADO
+                    stmtCrente.setInt(1, idCrente);
+                    stmtCrente.addBatch();
+                }
+
+                stmtDetalhe.executeBatch();
+                stmtCrente.executeBatch();
+            }
+
+            conn.commit(); // Efetiva todas as alterações
+            return true;
+        } catch (SQLException e) {
+            if (conn != null) {
+                conn.rollback(); // Reverte em caso de falha
+            }
+            throw e;
+        } finally {
+            if (conn != null) {
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package controller.dashboard;
 
+import dao.CrenteDAO;
 import dao.MovimentacaoFinanceiraDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Crente;
 import model.Usuario;
 
 import java.io.IOException;
@@ -65,8 +67,32 @@ public class DashboardServlet extends HttpServlet {
             break;
 
             case "PASTOR":
-                req.getRequestDispatcher("/views/dashboard/dashboard_pastor.jsp").forward(req, resp);
-                break;
+                try{
+                    // Instâncias das DAOs
+                    CrenteDAO crenteDAO = new CrenteDAO();
+
+                    // Buscando os totais do banco de dados
+                    int totalMembros = crenteDAO.contarTotalMembros();
+                    int totalBatizados = crenteDAO.contarBatizados();
+                    int totalAguardando = crenteDAO.contarAguardandoBatismo();
+                    int entradasMes = crenteDAO.contarEntradasMesAtual();
+                    List<Crente> ultimosMembros = crenteDAO.listarUltimosCadastrados(5);
+
+                    // Injetando no Request Scope
+                    req.setAttribute("totalMembros", totalMembros);
+                    req.setAttribute("totalBatizados", totalBatizados);
+                    req.setAttribute("totalAguardando", totalAguardando);
+                    req.setAttribute("entradasMes", entradasMes);
+                    req.setAttribute("ultimosMembros", ultimosMembros);
+
+                    // Encaminhamento para a JSP
+                    req.getRequestDispatcher("/views/dashboard/dashboard_pastor.jsp").forward(req, resp);
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    resp.sendRedirect(req.getContextPath() + "/login?erro=erro_bd");
+                }
+        break;
 
             default:
                 resp.sendRedirect(req.getContextPath() + "/logout");

@@ -4,13 +4,13 @@
 
 
 
-CREATE DATABASE IF NOT EXISTS `sigeigreja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS 'sigeigreja' DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `sigeigreja`;
 
 -- --------------------------------------------------------
 -- 1. TABELA DE GRUPOS DA IGREJA (Jovens, Mulheres, Homens, etc.)
 -- --------------------------------------------------------
-CREATE TABLE `grupos` (
+CREATE TABLE 'grupos' (
   `idgrupo` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(50) NOT NULL,
   `descricao` VARCHAR(150) DEFAULT NULL,

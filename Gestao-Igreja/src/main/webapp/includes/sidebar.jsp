@@ -30,10 +30,10 @@
 
         <%-- Acesso Pastoral --%>
         <% if ("PASTOR".equals(funcao) || "ADMINISTRADOR".equals(funcao)) { %>
-            <a href="<%= request.getContextPath() %>/confirmar-batismo">Confirmação de Batismo</a>
+            <a href="<%= request.getContextPath() %>/pastoral/confirmar-batismo">Confirmação de Batismo</a>
         <% } %>
 
-        <%-- Acesso Exclusivo do Administrador aos Logs[cite: 5, 6] --%>
+        <%-- Acesso Exclusivo do Administrador aos Logs--%>
         <% if ("ADMINISTRADOR".equals(funcao)) { %>
             <a href="<%= request.getContextPath() %>/admin/logs" class="menu-admin">Logs de Auditoria</a>
         <% } %>
