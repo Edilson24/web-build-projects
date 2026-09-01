@@ -34,7 +34,7 @@ public class AutenticacaoFilter implements Filter {
                 Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
                 String funcao = usuario.getFuncao();
 
-                // Validação de acesso exclusivo do ADMINISTRADOR aos logs[cite: 5, 6]
+                // Validação de acesso exclusivo do ADMINISTRADOR aos logs
                 if (uri.contains("/admin/logs") && !"ADMINISTRADOR".equalsIgnoreCase(funcao)) {
                     resp.sendRedirect(contextPath + "/views/dashboard/dashboard_admin.jsp?erro=acesso_negado");
                     return;

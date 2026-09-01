@@ -170,3 +170,11 @@ INSERT INTO batismo_candidatos (idbatismo, idcrente, status_candidato) VALUES
 
 COMMIT;
 
+CREATE TABLE IF NOT EXISTS cultos (
+    idculto INT AUTO_INCREMENT PRIMARY KEY,
+    dia_semana VARCHAR(20) NOT NULL, -- Ex: 'Domingo', 'Quarta-feira'
+    horario_inicio TIME NOT NULL,
+    horario_fim TIME NOT NULL,
+    descricao VARCHAR(100) NOT NULL, -- Ex: 'Culto da Família', 'Culto de Ensino'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

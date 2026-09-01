@@ -1,6 +1,7 @@
 package controller.dashboard;
 
 import dao.CrenteDAO;
+import dao.CultoDAO;
 import dao.MovimentacaoFinanceiraDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Crente;
+import model.Culto;
 import model.Usuario;
 
 import java.io.IOException;
@@ -70,6 +72,7 @@ public class DashboardServlet extends HttpServlet {
                 try{
                     // Instâncias das DAOs
                     CrenteDAO crenteDAO = new CrenteDAO();
+                    CultoDAO cultoDAO = new CultoDAO();
 
                     // Buscando os totais do banco de dados
                     int totalMembros = crenteDAO.contarTotalMembros();
@@ -77,6 +80,7 @@ public class DashboardServlet extends HttpServlet {
                     int totalAguardando = crenteDAO.contarAguardandoBatismo();
                     int entradasMes = crenteDAO.contarEntradasMesAtual();
                     List<Crente> ultimosMembros = crenteDAO.listarUltimosCadastrados(5);
+                    List<Culto> listaCultos = cultoDAO.listarTodos();
 
                     // Injetando no Request Scope
                     req.setAttribute("totalMembros", totalMembros);
@@ -84,6 +88,7 @@ public class DashboardServlet extends HttpServlet {
                     req.setAttribute("totalAguardando", totalAguardando);
                     req.setAttribute("entradasMes", entradasMes);
                     req.setAttribute("ultimosMembros", ultimosMembros);
+                    req.setAttribute("listaCultos", listaCultos);
 
                     // Encaminhamento para a JSP
                     req.getRequestDispatcher("/views/dashboard/dashboard_pastor.jsp").forward(req, resp);
