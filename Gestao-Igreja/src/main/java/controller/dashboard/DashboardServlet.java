@@ -22,6 +22,7 @@ import java.util.Map;
 
 @WebServlet("/dashboard")
 public class DashboardServlet extends HttpServlet {
+    CrenteDAO crenteDAO = new CrenteDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,12 +37,33 @@ public class DashboardServlet extends HttpServlet {
 
         switch (usuario.getFuncao()) {
             case "ADMINISTRADOR":
-                req.getRequestDispatcher("/views/dashboard/dashboard_admin.jsp").forward(req, resp);
-                break;
+                try {
+                    req.setAttribute("totalMembros", crenteDAO.contarTotalMembros());
+                    req.setAttribute("totalBatizados", crenteDAO.contarBatizados());
+                    req.getRequestDispatcher("/views/dashboard/dashboard_admin.jsp").forward(req, resp);
+                    req.getRequestDispatcher("/views/dashboard/dashboard_admin.jsp").forward(req, resp);
+
+                if ("PASTOR".equalsIgnoreCase(usuario.getFuncao())) {
+                    req.getRequestDispatcher("/views/dashboard/dashboard_pastor.jsp").forward(req, resp);
+
+                } else if ("SECRETARIO".equalsIgnoreCase(usuario.getFuncao())) {
+                    req.getRequestDispatcher("/views/dashboard/dashboard_secretaria.jsp").forward(req, resp);
+
+                } else if ("TESOUREIRO".equalsIgnoreCase(usuario.getFuncao())) {
+                    resp.sendRedirect(req.getContextPath() + "/movimentacoes");
+                } else {
+                    resp.sendRedirect(req.getContextPath() + "/login");
+                }
+
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+
+            break;
 
             case "SECRETARIO":
                 req.getRequestDispatcher("/views/dashboard/dashboard_secretaria.jsp").forward(req, resp);
-                break;
+            break;
 
             case "TESOUREIRO":
                 try {
@@ -71,7 +93,7 @@ public class DashboardServlet extends HttpServlet {
             case "PASTOR":
                 try{
                     // Instâncias das DAOs
-                    CrenteDAO crenteDAO = new CrenteDAO();
+
                     CultoDAO cultoDAO = new CultoDAO();
 
                     // Buscando os totais do banco de dados
@@ -101,7 +123,7 @@ public class DashboardServlet extends HttpServlet {
 
             default:
                 resp.sendRedirect(req.getContextPath() + "/logout");
-                break;
+            break;
         }
     }
 }

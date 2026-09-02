@@ -40,7 +40,7 @@ public class CrenteServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
-        if (usuarioLogado == null) {
+        if (usuarioLogado == null || (!"SECRETARIO".equalsIgnoreCase(usuarioLogado.getFuncao()) && !"ADMINISTRADOR".equalsIgnoreCase(usuarioLogado.getFuncao()))) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }

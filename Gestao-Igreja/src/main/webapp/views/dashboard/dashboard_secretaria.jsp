@@ -50,6 +50,7 @@ Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/styleSecretaria.css">
+        <link rel="stylesheet" href="<c:url value='/assets/css/styleAdmin.css'/>">
 </head>
 <body class="dashboard-body">
 
@@ -69,19 +70,7 @@ Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="<%= request.getContextPath() %>/dashboard" class="nav-item active">
-                    <i class="fa-solid fa-chart-line"></i> Visão Geral
-                </a>
-                <a href="<%= request.getContextPath() %>/secretaria/membros" class="nav-item">
-                    <i class="fa-solid fa-users"></i> Gestão de Membros
-                </a>
-                <a href="<%= request.getContextPath() %>/secretaria/batismos" class="nav-item">
-                    <i class="fa-solid fa-water"></i> Batismos
-                </a>
-            </nav>
-        </aside>
+        <jsp:include page="/includes/sidebar.jsp" />
 
         <!-- Main Content -->
         <main class="main-content">

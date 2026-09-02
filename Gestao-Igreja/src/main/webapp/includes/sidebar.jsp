@@ -19,8 +19,8 @@
 
         <%-- Acesso Secretaria / Admin --%>
         <% if ("SECRETARIO".equals(funcao) || "ADMINISTRADOR".equals(funcao)) { %>
-            <a href="<%= request.getContextPath() %>/membros">Membros (Crentes)</a>
-            <a href="<%= request.getContextPath() %>/batismos">Agendamento Batismos</a>
+            <a href="<%= request.getContextPath() %>/secretaria/membros">Membros (Crentes)</a>
+            <a href="<%= request.getContextPath() %>/secretaria/batismos">Agendamento Batismos</a>
         <% } %>
 
         <%-- Acesso Tesouraria / Admin --%>

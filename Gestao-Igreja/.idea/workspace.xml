@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Pastoral: 85% CONCLUÍDO!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/pastoral/CultoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CultoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Culto.java" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleAdmin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/includes/sidebarAdmin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/LogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/LogServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LogDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LogDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sigeigreja.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_pastor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_pastor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/admin/LogServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/admin/LogServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/sigeigreja.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/sigeigreja.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/LogDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/LogDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +56,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;assignee&quot;: &quot;Edilson24&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;Edilson24&quot;
   }
 }</component>
@@ -272,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788283132223</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!">
+      <option name="closed" value="true" />
+      <created>1788295881768</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1788295881768</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +336,7 @@
     <MESSAGE value="Gestão de Igreja - Módulo Financeiro: 95% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - SECRETARIA &amp; TESOOURARIA:  CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 85% CONCLUÍDO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Pastoral: 85% CONCLUÍDO!" />
+    <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!" />
   </component>
 </project>

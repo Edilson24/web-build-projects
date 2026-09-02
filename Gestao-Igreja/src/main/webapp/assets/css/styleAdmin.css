@@ -1,0 +1,103 @@
+/* NAVEGAÇÃO EXPANSÍVEL (TREE VIEW / IDE) */
+.sidebar-menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 10px;
+}
+
+/* Item Pai (Pasta do Nível de Acesso) */
+.tree-node {
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    color: #cbd5e0;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tree-header:hover {
+    background-color: #3a4a61;
+    color: #ffffff;
+}
+
+.tree-header .node-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tree-header .chevron-icon {
+    font-size: 11px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotação da seta quando a pasta está aberta */
+.tree-node.open .chevron-icon {
+    transform: rotate(90deg);
+}
+
+/* Submenu (Ficheiros dentro do Nível de Acesso) */
+.tree-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 20px; /* Indentação estilo pasta */
+}
+
+.tree-node.open .tree-content {
+    max-height: 500px; /* Expande suavemente */
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* Links do Submenu */
+.tree-content a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: #a0aec0;
+    text-decoration: none;
+    font-size: 13px;
+    border-left: 2px solid #4a5568;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.2s ease;
+}
+
+.tree-content a:hover {
+    background-color: #3a4a61;
+    color: #ffffff;
+    border-left-color: #4299e1;
+}
+
+.tree-content a.active {
+    background-color: #3182ce;
+    color: #ffffff;
+    font-weight: 600;
+    border-left-color: #63b3ed;
+}
+
+/* Destaque para Cor das Pastas */
+.tree-node[data-nivel="ADMINISTRADOR"] .tree-header { color: #feebc8; }
+.tree-node[data-nivel="ADMINISTRADOR"] .tree-header:hover { background-color: #7b341e; }
+
+/* Botão Sair */
+.btn-logout-tree {
+    margin-top: 15px;
+    border-top: 1px solid #4a5568;
+    padding-top: 10px;
+}
