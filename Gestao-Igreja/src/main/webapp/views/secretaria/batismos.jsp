@@ -11,38 +11,17 @@
     <title>SIGEIGREJA - Gestão de Batismos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/styleSecretaria.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/styleAdmin.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/styleTesouraria.css">
 </head>
 <body class="dashboard-body">
 
-    <!-- Topbar -->
-    <header class="top-bar">
-        <div class="brand">
-            <i class="fa-solid fa-church"></i>
-            <span>SIGEIGREJA</span>
-        </div>
-        <div class="user-info">
-            <span><i class="fa-solid fa-user-circle"></i> <%= usuario != null ? usuario.getNome() : "Secretaria" %></span>
-            <a href="<%= request.getContextPath() %>/logout" class="btn-logout">
-                <i class="fa-solid fa-right-from-bracket"></i> Sair
-            </a>
-        </div>
-    </header>
+<jsp:include page="/includes/header.jsp" />
 
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="<%= request.getContextPath() %>/dashboard" class="nav-item">
-                    <i class="fa-solid fa-chart-line"></i> Visão Geral
-                </a>
-                <a href="<%= request.getContextPath() %>/secretaria/membros" class="nav-item">
-                    <i class="fa-solid fa-users"></i> Gestão de Membros
-                </a>
-                <a href="<%= request.getContextPath() %>/secretaria/batismos" class="nav-item active">
-                    <i class="fa-solid fa-water"></i> Batismos
-                </a>
-            </nav>
-        </aside>
+                <jsp:include page="/includes/sidebar.jsp" />
 
         <!-- Main Content -->
         <main class="main-content">

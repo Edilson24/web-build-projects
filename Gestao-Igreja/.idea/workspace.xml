@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/styleAdmin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/includes/sidebarAdmin.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" afterDir="false" />
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Diretorios do sidebar do administrador funcionando!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/LogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/LogServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/dashboard/DashboardServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/secretaria/CrenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/LogDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LogDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/sidebar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_pastor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_pastor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/admin/LogServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/admin/LogServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/dashboard/DashboardServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/secretaria/CrenteServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/LogDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/LogDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pastoral/confirmacao_batismo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pastoral/confirmacao_batismo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788295881768</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Diretorios do sidebar do administrador funcionando!">
+      <option name="closed" value="true" />
+      <created>1788347463461</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1788347463462</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +333,7 @@
     <MESSAGE value="Gestão de Igreja - SECRETARIA &amp; TESOOURARIA:  CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 85% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!" />
+    <MESSAGE value="Diretorios do sidebar do administrador funcionando!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diretorios do sidebar do administrador funcionando!" />
   </component>
 </project>

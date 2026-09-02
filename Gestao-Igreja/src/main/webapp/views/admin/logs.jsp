@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <jsp:include page="/includes/header.jsp" />
     <div class="app-container" style="display: flex;">
 
         <!-- Sidebar Expansível -->

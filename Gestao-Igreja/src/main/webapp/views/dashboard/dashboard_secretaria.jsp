@@ -1,12 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Usuario, model.Crente, dao.CrenteDAO, java.util.List" %>
-
-
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 
 <%@ page import="model.Batismo" %>
-
 <%@ page import="dao.BatismoDAO" %>
-
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
@@ -50,23 +48,13 @@ Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/styleSecretaria.css">
-        <link rel="stylesheet" href="<c:url value='/assets/css/styleAdmin.css'/>">
+    <link rel="stylesheet" href="<c:url value='/assets/css/styleAdmin.css'/>">
+    <link rel="stylesheet" href="<c:url value='/assets/css/style.css'/>">
+    <link rel="stylesheet" href="<c:url value='/assets/css/styleTesouraria.css'/>">
 </head>
 <body class="dashboard-body">
 
-    <!-- Topbar -->
-    <header class="top-bar">
-        <div class="brand">
-            <i class="fa-solid fa-church"></i>
-            <span>SIGEIGREJA</span>
-        </div>
-        <div class="user-info">
-            <span><i class="fa-solid fa-user-circle"></i> <%= usuario.getNome() %> (<strong><%= usuario.getFuncao() %></strong>)</span>
-            <a href="<%= request.getContextPath() %>/logout" class="btn-logout">
-                <i class="fa-solid fa-right-from-bracket"></i> Sair
-            </a>
-        </div>
-    </header>
+    <jsp:include page="/includes/header.jsp" />
 
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
