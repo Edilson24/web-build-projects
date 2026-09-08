@@ -96,16 +96,32 @@
                                         </span>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
                                 <asp:TemplateField HeaderText="Ações" ItemStyle-Width="120px" ItemStyle-CssClass="text-end" HeaderStyle-CssClass="text-end">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnEditar" runat="server" CommandName="EditarUsuario" CommandArgument='<%# Eval("idusuario") %>' CssClass="btn btn-sm text-white" Style="background-color: #1E3F4A;" title="Editar Usuário">
+                                        <%-- Botão Editar --%>
+                                        <asp:LinkButton ID="btnEditar" runat="server" 
+                                            CommandName="EditarUsuario" 
+                                            CommandArgument='<%# Eval("idusuario") %>' 
+                                            CssClass="btn btn-sm text-white" 
+                                            Style="background-color: #1E3F4A;" 
+                                            title="Editar Usuário">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="btnAlternarStatus" runat="server" CommandName="AlternarStatus" CommandArgument='<%# Eval("idusuario") %>' CssClass="btn btn-sm text-white" Style="background-color: #4299A3;" title="Alternar Status (Ativar/Desativar)">
+
+                                        <%-- Botão Alternar Status: Oculto (Visible=False) se idusuario for igual ao UsuarioId da Session --%>
+                                        <asp:LinkButton ID="btnAlternarStatus" runat="server" 
+                                            CommandName="AlternarStatus" 
+                                            CommandArgument='<%# Eval("idusuario") %>' 
+                                            CssClass="btn btn-sm text-white" 
+                                            Style="background-color: #4299A3;" 
+                                            title="Alternar Status (Ativar/Desativar)"
+                                            Visible='<%# Convert.ToInt32(Eval("idusuario")) <> Convert.ToInt32(Session("UsuarioId")) %>'>
                                             <i class="fa-solid fa-user-slash"></i>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
                             </Columns>
                         </asp:GridView>
                     </div>

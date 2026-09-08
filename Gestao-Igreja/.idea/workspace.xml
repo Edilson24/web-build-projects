@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Diretorios do sidebar do administrador funcionando!">
+    <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Sistema de Gestão de Igreja - TERMONADO!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/logs.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_secretaria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pastoral/confirmacao_batismo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pastoral/confirmacao_batismo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/batismos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/secretaria/membros.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Usuarios.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Usuarios.aspx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788347463462</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Sistema de Gestão de Igreja - TERMONADO!">
+      <option name="closed" value="true" />
+      <created>1788349342819</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788349342819</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,6 +339,7 @@
     <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 85% CONCLUÍDO!" />
     <MESSAGE value="Gestão de Igreja - Módulo Pastoral: 100% CONCLUÍDO!" />
     <MESSAGE value="Diretorios do sidebar do administrador funcionando!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diretorios do sidebar do administrador funcionando!" />
+    <MESSAGE value="Sistema de Gestão de Igreja - TERMONADO!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sistema de Gestão de Igreja - TERMONADO!" />
   </component>
 </project>
