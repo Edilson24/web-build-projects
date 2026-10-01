@@ -3,16 +3,47 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="68e7d4be-087f-4a5c-ab53-e378f6850fc5" name="Changes" comment="Sistema de Gestão de Igreja - TERMONADO!">
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LifterPublic/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/dashboard/dashboard_admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Usuarios.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Usuarios.aspx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/documentacao/diretorios_hope.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/documentacao/diretorios_hope.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AutenticacaoFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/login/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UsuarioDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/AutenticacaoFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/bin/SIGEBIBLIOTECA.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/bin/SIGEBIBLIOTECA.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/bin/SIGEBIBLIOTECA.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/bin/SIGEBIBLIOTECA.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/dao/EmprestimoDAO.vb" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/dao/EmprestimoDAO.vb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/obj/Debug/SIGEBIBLIOTECA.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/obj/Debug/SIGEBIBLIOTECA.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/obj/Debug/SIGEBIBLIOTECA.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/obj/Debug/SIGEBIBLIOTECA.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Emprestimos.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Emprestimos.aspx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Emprestimos.aspx.vb" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Emprestimos.aspx.vb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Leitores.aspx.vb" beforeDir="false" afterPath="$PROJECT_DIR$/../SIGEBIBLIOTECA/SIGEBIBLIOTECA/views/Leitores.aspx.vb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja" value="3K6ID8frM9jof2d8s7EM4P8gTWy" />
+    </persistenceIdMap>
   </component>
   <component name="DBNavigator.Project.Workspace.Settings">
     <assistant-settings>
@@ -28,6 +59,9 @@
         <mcp-tool-approvals />
       </mcp-server-settings>
     </assistant-settings>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="80" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,6 +97,69 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.1773088207395959" />
+      <entry key="MS500" value="2.4360830862379386" />
+      <entry key="S2" value="7.103245960238287" />
+      <entry key="S5" value="17.779348899389046" />
+      <entry key="S10" value="31.271035536194773" />
+      <entry key="S30" value="51.52774962451189" />
+      <entry key="S60" value="59.41203718889104" />
+      <entry key="M2" value="64.08309485115478" />
+      <entry key="M5" value="75.78888774811716" />
+      <entry key="M10" value="105.81838082212252" />
+      <entry key="M15" value="129.76108552927417" />
+      <entry key="M30" value="168.42474413434428" />
+      <entry key="H1" value="195.95828837494247" />
+      <entry key="H2" value="212.42345767066254" />
+      <entry key="H4" value="221.4315588671518" />
+      <entry key="D1" value="229.36488642871453" />
+      <entry key="W1" value="230.7654039843306" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9069878618238221" />
+      <entry key="MS500" value="2.3212095717431875" />
+      <entry key="S2" value="7.009484219879645" />
+      <entry key="S5" value="17.669164439516813" />
+      <entry key="S10" value="31.168946917811056" />
+      <entry key="S30" value="51.4713836981523" />
+      <entry key="S60" value="59.379683991678355" />
+      <entry key="M2" value="64.06571569476526" />
+      <entry key="M5" value="75.78106297469076" />
+      <entry key="M10" value="105.81341961320383" />
+      <entry key="M15" value="129.75721103218797" />
+      <entry key="M30" value="168.4223425398671" />
+      <entry key="H1" value="195.9569203925706" />
+      <entry key="H2" value="212.422723393209" />
+      <entry key="H4" value="221.43117793049743" />
+      <entry key="D1" value="229.36482091013733" />
+      <entry key="W1" value="230.76539457330853" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
   &quot;fromUser&quot;: false
@@ -71,33 +168,51 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Smart Tomcat.Tomcat: Gestao-Igreja.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Smart Tomcat.Tomcat: Gestao-Igreja.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Offline Edilson/LIFTER/Lifter.servicies/WorkSpace/Projetos/OpenProjectSystems/Gestao-Igreja/src/main/java/util",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.customization.CustomizationConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Offline Edilson\LIFTER\Lifter.servicies\WorkSpace\Projetos\OpenProjectSystems\Gestao-Igreja\src\main\java\util" />
@@ -115,9 +230,19 @@
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="" />
+      <option name="catalinaBase" value="C:\Users\hp\.SmartTomcat\Gestao-Igreja\Gestao-Igreja" />
       <option name="contextPath" value="/Gestao-Igreja" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map>
+          <entry key="SMTP_FROM" value="www.edilsonhilario@gmail.com" />
+          <entry key="SMTP_HOST" value="smtp.gmail.com" />
+          <entry key="SMTP_PASSWORD" value="cjmzuztbxhrzsetd" />
+          <entry key="SMTP_PORT" value="587" />
+          <entry key="SMTP_STARTTLS" value="true" />
+          <entry key="SMTP_USER" value="www.edilsonhilario@gmail.com" />
+        </map>
+      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>

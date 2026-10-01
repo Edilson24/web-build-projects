@@ -70,7 +70,7 @@ Gestao-Igreja/
             │
             ├── includes/                 # Componentes reutilizáveis do Layout
             │   ├── header.jsp                     # Topbar com dados e foto do usuário logado
-            │   ├── navbar.jsp
+            │   ├── navbar.jspL
             │   └── sidebar.jsp                    # Menu lateral dinâmico baseado no perfil do usuário
             │
             ├── views/                    # Visualizações segmentadas por Módulo

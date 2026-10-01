@@ -67,8 +67,10 @@
                 </button>
             </form>
 
+            <a class="login-forgot-password" href="<%= request.getContextPath() %>/recuperar-senha">Esqueceu sua senha?</a>
+
             <div class="login-footer">
-                <small>&copy; SIGEIGREJA - Todos os direitos reservados</small>
+                <small>&copy; lifter - Todos os direitos reservados</small>
             </div>
         </div>
 

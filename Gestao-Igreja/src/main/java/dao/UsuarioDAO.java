@@ -38,6 +38,27 @@ public class UsuarioDAO {
         return null;
     }
 
+    public String buscarNomePorEmail(String email) throws SQLException {
+        String sql = "SELECT nome FROM usuarios WHERE email = ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next() ? rs.getString("nome") : null;
+            }
+        }
+    }
+
+    public boolean atualizarSenha(String email, String senha) throws SQLException {
+        String sql = "UPDATE usuarios SET senha = ? WHERE email = ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, senha);
+            stmt.setString(2, email);
+            return stmt.executeUpdate() == 1;
+        }
+    }
+
     /**
      * Valida o limite estrito de no máximo 3 pastores cadastrados no sistema.
      */

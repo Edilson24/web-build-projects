@@ -24,7 +24,8 @@ public class AutenticacaoFilter implements Filter {
         String contextPath = req.getContextPath();
 
         // Recursos públicos que não exigem autenticação
-        boolean isLoginRoute = uri.endsWith("/login") || uri.endsWith("/login.jsp") || uri.contains("LoginServlet");
+        boolean isLoginRoute = uri.endsWith("/login") || uri.endsWith("/login.jsp")
+                || uri.endsWith("/recuperar-senha") || uri.contains("LoginServlet");
         boolean isStaticResource = uri.contains("/assets/") || uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".png");
 
         boolean isLogged = (session != null && session.getAttribute("usuarioLogado") != null);
